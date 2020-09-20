@@ -2,7 +2,6 @@ package com.example.onlinefreelaceapp.Common;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.onlinefreelaceapp.HelperClasses.SliderAdapter;
 import com.example.onlinefreelaceapp.R;
-import com.example.onlinefreelaceapp.User.UserDashboard;
+import com.example.onlinefreelaceapp.UserDashboard;
 
 public class OnBoarding extends AppCompatActivity {
 

@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.onlinefreelaceapp.R;
-import com.example.onlinefreelaceapp.User.UserDashboard;
+import com.example.onlinefreelaceapp.UserDashboard;
 
 public class OnLine extends AppCompatActivity {
 

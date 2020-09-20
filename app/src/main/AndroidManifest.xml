@@ -7,7 +7,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Common.BuyerRequestSuccessful"></activity>
+        <activity
+            android:name=".OrdersToBeReceived"
+            android:label="@string/title_activity_orders_to_be_received"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".OrdersToMe"
+            android:parentActivityName=".UserDashboard" />
+        <activity android:name=".SubmitOrder" />
+        <activity android:name=".Common.BuyerRequestSuccessful" />
         <activity android:name=".Common.AccountCreateSuccessfully" />
         <activity android:name=".Common.PostRequestUpdatePage" />
         <activity android:name=".Common.PostARequestHome" />
@@ -21,7 +29,7 @@
         <activity android:name=".Common.LoginSignup.Login" />
         <activity android:name=".Common.LoginSignup.RetailerStartUpScreen" />
         <activity android:name=".Common.OnBoarding" />
-        <activity android:name=".User.UserDashboard" />
+        <activity android:name=".UserDashboard" />
         <activity android:name=".Common.OnLine">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
