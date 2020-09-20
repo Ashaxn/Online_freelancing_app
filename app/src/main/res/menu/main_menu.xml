@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/home"
+            android:icon="@drawable/menu_dashboard_icon"/>
+        <item
+            android:id="@+id/nav_search"
+            android:title="@string/search"
+            android:icon="@drawable/menu_search_icon"/>
+        <item
+            android:id="@+id/nav_favourites"
+            android:title="@string/favourites"
+            android:icon="@drawable/menu_favourites_icon"/>
+
+        <item
+            android:id="@+id/nav_my_gigs"
+            android:title="@string/my_gigs"
+            android:icon="@drawable/menu_my_gigs"/>
+
+        <item
+            android:id="@+id/nav_my_orders"
+            android:title="@string/orders_to_me"
+            android:icon="@drawable/menu_orders_to_me"/>
+
+        <item
+            android:id="@+id/nav_to_be_received"
+            android:title="@string/to_be_received"
+            android:icon="@drawable/menu_to_be_received"/>
+    </group>
+
+    <item android:title="General">
+        <menu>
+
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_post_request"
+                    android:title="@string/post_a_request"
+                    android:icon="@drawable/menu_post_request"/>
+
+                <item
+                    android:id="@+id/nav_buyer_request"
+                    android:title="@string/buyer_requests"
+                    android:icon="@drawable/menu_buyer_request"/>
+                <item
+                    android:id="@+id/nav_contact_us"
+                    android:title="@string/contact_us"
+                    android:icon="@drawable/menu_contact_us"/>
+
+            </group>
+
+        </menu>
+    </item>
+
+
+</menu>

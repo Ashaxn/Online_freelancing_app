@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#152025</color>
+    <color name="colorPrimaryDark">#171C1F</color>
+    <color name="colorAccent">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightBlue">#1FC6B2</color>
+    <color name="colorDarkRed">#9D2F42</color>
+    <color name="colorDarkBlue">#646687</color>
+    <color name="colorLightGrey">#E1E6E2</color>
+
+    <!--For Dashboard-->
+
+    <color name="home_background">#F2F5F8</color>
+    <color name="banner_background">#F1E9CE</color>
+    <color name="banner_background_light">#56F1E9CE</color>
+
+    <!-- For Category -->
+    <color name="card1">#D4CBE5</color>
+    <color name="card2">#7ADCCF</color>
+    <color name="card3">#F7C59F</color>
+    <color name="card4">#B8D7F5</color>
+    
+</resources>

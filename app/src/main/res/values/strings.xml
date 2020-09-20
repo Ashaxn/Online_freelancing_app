@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">OnlineFreelaceAPP</string>
+    <string name="logo_name">On Line</string>
+    <string name="slogo_name">The Freelancing App!</string>
+    <string name="dashboard_name">The Freelancing App</string>
+    <string name="powered_by">Powered By Gray Matter Developers</string>
+
+    <!--Titles-->
+    <string name="first_slide_title">All On Your Phone</string>
+    <string name="second_slide_title">Grow Your Business</string>
+    <string name="third_slide_title">Showcase Your Works</string>
+    <string name="fourth_slide_title">Get Rewarded</string>
+
+    <!--Descriptions-->
+    <string name="first_slide_desc">All of that being online with the peace of mind and full control.</string>
+    <string name="second_slide_desc">You won\'t miss a single opportunity to grow your business and make money.</string>
+    <string name="third_slide_desc">It is your destination and find out more opportunities for your job.</string>
+    <string name="fourth_slide_desc">Earn money for your work and improve your business.</string>
+
+    <!--Buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Let\'s Get Started</string>
+
+    <!-- Success Messages-->
+    <string name="registration_successful">Registration Successful</string>
+    <string name="buyer_request_successful">Request Successful</string>
+    <string name="account_created_success">Your Account Created Successful</string>
+    <string name="buyer_request_posted_success">Your Buyer Request Posted Successful</string>
+
+    <!--Categories-->
+    <string name="graphic">Graphic &amp; Design</string>
+    <string name="programming">Programming</string>
+    <string name="writing">Writing</string>
+    <string name="marketing">Digital Marketing</string>
+
+    <!--Titles and Descriptions-->
+    <string name="featured_gigs">All Featured Gigs</string>
+    <string name="featured_gigs_description">All the gigs that are featured and have the top demand in app!</string>
+    <string name="categories">Categories</string>
+    <string name="all_gigs">Most Viewed</string>
+    <string name="view_all">View All</string>
+    <string name="search_text">Search...</string>
+
+    <!--Flyer Text-->
+    <string name="flyer_text">I will do creative business flyer poster design.I\'ll give you Unlimited Modification for your Design.</string>
+    <string name="flyer_design">Flyer Design</string>
+    <string name="todo">TODO</string>
+
+    <!--Navigation Texts-->
+    <string name="home">HOME</string>
+    <string name="search">SEARCH</string>
+    <string name="favourites">FAVOURITES</string>
+    <string name="my_gigs">MY GIGS</string>
+    <string name="orders_to_me">ORDERS TO ME</string>
+    <string name="to_be_received">TO BE RECEIVED</string>
+    <string name="post_a_request">POST A REQUEST</string>
+    <string name="buyer_requests">BUYER REQUESTS</string>
+    <string name="contact_us">CONTACT US</string>
+
+    <!---Login SignUp-->
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="retailer_screen">Lets\'s\nGet Started</string>
+    <string name="retailer_screen_text">Get things done at your fingertips</string>
+    <string name="create_account">Create\nAccount</string>
+    <string name="remember_me">Remember Me</string>
+
+    <!--Password section-->
+    <string name="signup_screen_security">Security</string>
+    <string name="signup_screen_enterpassword">Enter Password</string>
+    <string name="signup_screen_confirmpassword">Confirm Password</string>
+
+    <!--Sign Up Pages-->
+    <string name="next_page">Next</string>
+    <string name="full_name">Full Name</string>
+    <string name="user_name">Username</string>
+    <string name="enter_email">Email</string>
+    <string name="mobile_no">Mobile</string>
+    <string name="province">Province</string>
+    <string name="have_account">Have A Account</string>
+
+    <!--Post A Request Pages-->
+    <string name="post_title">Post Title</string>
+    <string name="_post_request_header_name">Post a Request</string>
+    <string name="how_requests_work">Post a request to our sellers.Seller will send their offers and you can choose who you would like to work with.Once you decide, you can purchase their Gig.</string>
+    <string name="post_req_desc">What you need. Add a Description....</string>
+    <string name="post_budget">What\'s your budget? In Rs.</string>
+    <string name="post_deadline">Select Deadline Date</string>
+    <string name="submit_post">Submit Your Request</string>
+    <string name="cancel">Cancel</string>
+    <string name="back_postreq">Back</string>
+    <string name="postreq_edit_page">You can edit your request in here.</string>
+
+    <!--Buyer Request Page-->
+    <string name="active_buyer_request">Active Buyer Request</string>
+    <string name="buyer_request_desc">I am looking for a logo designer who can help me to create my logo design orders.Due to my busy schedule I am unable to work on my logo design orders.Only creative design send their offers.</string>
+    <string name="budget_request">Rs.1000</string>
+    <string name="post_req_send_offer">Send Offer</string>
+    <string name="post_req_call">Call</string>
+    <string name="post_req_message">Message</string>
+    <string name="post_req_title_userview">I Need a Professional Logo Designer</string>
+
+    <!--Send Offer Page-->
+    <string name="send_offer">Send Offer</string>
+    <string name="your_mobile_no">Your mobile no</string>
+    <string name="send_offer_desc">Add description for your offer...</string>
+    <string name="total_offer_amount">Total offer amount. In Rs.</string>
+
+
+</resources>
