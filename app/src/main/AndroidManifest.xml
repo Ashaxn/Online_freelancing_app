@@ -14,7 +14,7 @@
         <activity
             android:name=".OrdersToMe"
             android:parentActivityName=".UserDashboard" />
-        <activity android:name=".SubmitOrder" />
+        <activity android:name=".ReviewOrder" />
         <activity android:name=".Common.BuyerRequestSuccessful" />
         <activity android:name=".Common.AccountCreateSuccessfully" />
         <activity android:name=".Common.PostRequestUpdatePage" />

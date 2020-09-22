@@ -12,8 +12,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.example.onlinefreelaceapp.R;
 import com.example.onlinefreelaceapp.UserDashboard;
+import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
 
 public class OnLine extends AppCompatActivity {
 
@@ -65,7 +67,7 @@ public class OnLine extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Intent intent = new Intent(getApplicationContext(),UserDashboard.class);
+                    Intent intent = new Intent(getApplicationContext(),RetailerStartUpScreen.class);
                     startActivity(intent);
                     finish();
                 }
