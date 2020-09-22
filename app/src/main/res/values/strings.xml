@@ -109,6 +109,12 @@
     <string name="your_mobile_no">Your mobile no</string>
     <string name="send_offer_desc">Add description for your offer...</string>
     <string name="total_offer_amount">Total offer amount. In Rs.</string>
-
+    <string name="title_activity_orders_to_me">Orders To Me</string>
+    <string name="tabtext_processing">Processing</string>
+    <string name="tabtext_completed">Completed</string>
+    <string name="tabtext_received">Received</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_orders_to_be_received">Orders To Be Received</string>
 
 </resources>

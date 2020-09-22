@@ -1,4 +1,4 @@
-package com.example.onlinefreelaceapp.User;
+package com.example.onlinefreelaceapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,8 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
+import com.example.onlinefreelaceapp.OrdersToBeReceived;
+import com.example.onlinefreelaceapp.OrdersToMe;
 import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -110,8 +112,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 Intent intent = new Intent(getApplicationContext(),PostRequest.class);
                 startActivity(intent);
                 break;
-
-
+            case R.id.nav_my_orders:
+                Intent intent1 = new Intent(getApplicationContext(), OrdersToMe.class);
+                startActivity(intent1);
+                break;
+            case R.id.nav_to_be_received:
+                Intent intent2 = new Intent(getApplicationContext(), OrdersToBeReceived.class);
+                startActivity(intent2);
+                break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

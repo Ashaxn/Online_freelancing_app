@@ -59,6 +59,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loginUserName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -83,6 +84,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -118,6 +120,7 @@
             </RelativeLayout>
             
             <Button
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
