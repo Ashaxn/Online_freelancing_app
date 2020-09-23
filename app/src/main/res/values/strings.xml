@@ -109,6 +109,50 @@
     <string name="your_mobile_no">Your mobile no</string>
     <string name="send_offer_desc">Add description for your offer...</string>
     <string name="total_offer_amount">Total offer amount. In Rs.</string>
+    <string name="becomeasellerpage_heading1">Become A Seller</string>
+
+
+    <!--Become a seller page strings-->
+
+    <string name="become">Become A Seller</string>
+    <string name="your">Your Gigs</string>
+    <string name="firstgig">Create New Gig</string>
+    <string name="secondgig">JavaProgramming</string>
+    <string name="thirdgig">Photography</string>
+    <string name="fourthgig">Vediography</string>
+    <string name="fifthgig">MusicDirecting</string>
+    <string name="sixthgig">C++ Programming</string>
+    <string name="seventhgig">WebDesigning</string>
+    <string name="welcome">Welcome</string>
+    <string name="createyourgig">Create Your Gig</string>
+    <string name="addimg">AddImage</string>
+    <string name="gigtitle">Enter GigTitle</string>
+    <string name="gigcategory">Enter Gig Category</string>
+    <string name="gigdes">Enter Gig Description</string>
+    <string name="deliveryinfo">Enter Delivery Information</string>
+    <string name="pricinginfo">Enter Pricing Information</string>
+    <string name="condetails">Enter Contact Details</string>
+    <string name="addthisgig">Add Gig</string>
+    <string name="viewgigforuser_topic">Graphic Designing</string>
+    <string name="view_gig_user_addimg">Gig Title</string>
+    <string name="view_user_graphicdesigning">I\'m Creating Any kind of graphic designing projects for you</string>
+    <string name="view_user_gigcat">Gig Category</string>
+    <string name="hint2">Graphic Designing</string>
+    <string name="topic2">Gig Category</string>
+    <string name="hint22">Graphic Designing</string>
+    <string name="topic3">Gig Description</string>
+    <string name="hint3">I will do any kind of graphic designing projects for you. I need every information from you before create your project. I want to contact you every day.</string>
+    <string name="topic4">Delivery Information</string>
+    <string name="hint4">Home Delivery</string>
+    <string name="topic5">Pricing Information</string>
+    <string name="hint5">Starting Price is 5$</string>
+    <string name="topicfirstin_viewgigforuser">Gig Title</string>
+    <string name="topic6">Pricing Information</string>
+    <string name="updatebutton">Update</string>
+    <string name="deletebutton">Delete</string>
+    <string name="show_more">Show more</string>
+    <string name="updatepage_saveupdate_btm">Save Changes</string>
+    <string name="purchasegigbutton">Purchase</string>
 
 
 </resources>
