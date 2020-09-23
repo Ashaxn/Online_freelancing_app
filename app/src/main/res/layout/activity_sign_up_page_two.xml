@@ -55,6 +55,7 @@
 
 
             <DatePicker
+                android:id="@+id/txtDob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:datePickerMode="spinner"
@@ -79,6 +80,7 @@
                 app:startIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -102,6 +104,7 @@
                 app:startIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtRePassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -113,11 +116,11 @@
 
 
             <Button
+                android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/rounded_button"
-                android:onClick="callRegistrationSuccess"
                 android:text="@string/sign_up" />
 
             <Button
