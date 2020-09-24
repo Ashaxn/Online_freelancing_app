@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
+import com.example.onlinefreelaceapp.Common.PostARequestHome;
 import com.example.onlinefreelaceapp.Common.PostRequest;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
@@ -109,7 +110,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             case R.id.nav_home:
             break;
             case R.id.nav_post_request:
-                Intent intent = new Intent(getApplicationContext(),PostRequest.class);
+                Intent intent = new Intent(getApplicationContext(),PostARequestHome.class);
                 startActivity(intent);
                 break;
             case R.id.nav_my_orders:

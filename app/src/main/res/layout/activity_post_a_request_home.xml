@@ -1,123 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".Common.PostARequestHome">
-
+    android:padding="30dp">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/colorWhite"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/post_request_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:src="@drawable/general_back_icon" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
-        android:fontFamily="@font/muli_black"
-        android:text="Post A Request"
-        android:textAllCaps="true"
-        android:textColor="@color/colorAccent"
-        android:textSize="30sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp"
-             android:layout_marginLeft="15dp"
-             android:text="Your can view your posted buyer requests in here"
-             android:textColor="@color/colorAccent"
-             android:textSize="12sp" />
-
-
-
-
-        <RelativeLayout
-            android:layout_width="370dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/card_3"
-            android:elevation="6dp">
-
-            <RelativeLayout
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentRight="true"
-                android:layout_margin="13dp"
-                android:background="@drawable/card_4" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="22dp"
-                android:layout_marginRight="23dp"
-                android:background="@drawable/post_requst_home_delete_icon" />
-
-            <RelativeLayout
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="13dp"
-                android:layout_marginRight="66dp"
-                android:background="@drawable/card_2" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="22dp"
-                android:layout_marginRight="76dp"
-                android:background="@drawable/post_request_home_edit_icon" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="sans-serif"
-                android:text="I Need a Professional\nLogo Designer"
-                android:textColor="@color/colorAccent"
-                android:textSize="19sp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/post_request_back_button"
             android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_margin="18dp"
-            android:background="@drawable/card_1">
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/general_back_icon" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="152dp"
-                android:background="@drawable/add_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/muli_black"
+            android:text="@string/_post_request_header_name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/how_requests_work"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp" />
 
-        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postrequest_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="?actionBarSize" />
 
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/postrequest_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:clickable="true"
+        android:src="@drawable/postrequest_add_btn"
+        app:backgroundTint="#28AFB0"/>
 
-</ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
