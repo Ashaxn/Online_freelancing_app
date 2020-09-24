@@ -2,18 +2,23 @@ package com.example.onlinefreelaceapp.Common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.onlinefreelaceapp.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PostARequestHome extends AppCompatActivity {
 
-    FloatingActionButton postrequest_btn;
-
+    private Button postadd;
+    private ListView listView;
+    private TextView postcount;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +26,18 @@ public class PostARequestHome extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_post_a_request_home);
 
-        postrequest_btn = findViewById(R.id.postrequest_btn);
-        postrequest_btn.setOnClickListener(new View.OnClickListener() {
+        postadd = findViewById(R.id.postadd);
+        listView = findViewById(R.id.postlist);
+        postcount = findViewById(R.id.postcount);
+        context = this;
+
+        postadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PostARequestHome.this, PostRequest.class);
-                startActivity(intent);
+                startActivity(new Intent(context, PostRequest.class));
             }
         });
 
         }
-
-
 
 }
