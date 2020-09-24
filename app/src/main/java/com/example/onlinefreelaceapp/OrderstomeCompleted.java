@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+//seller order list page
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link OrderstomeCompleted#newInstance} factory method to
@@ -52,6 +54,9 @@ public class OrderstomeCompleted extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
+
         }
     }
 

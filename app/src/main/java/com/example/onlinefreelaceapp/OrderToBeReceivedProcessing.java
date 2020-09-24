@@ -1,5 +1,8 @@
 package com.example.onlinefreelaceapp;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import com.example.onlinefreelaceapp.DataBase.DBHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +27,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class OrderToBeReceivedProcessing extends Fragment {
+
+    View view;
+    DBHelper DB;
+    Context context;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +76,40 @@ public class OrderToBeReceivedProcessing extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_to_be_received_processing, container, false);
+
+        view = inflater.inflate(R.layout.fragment_order_to_be_received_processing, container, false);
+
+        context = container.getContext();
+
+        Intent intent = getActivity().getIntent();
+
+        String usernameIntent = intent.getStringExtra("username");
+
+
+        Toast.makeText(getActivity().getApplicationContext(),usernameIntent,Toast.LENGTH_SHORT).show();
+
+        DB = new DBHelper(getActivity());
+
+        ArrayList<HashMap<String,String>> orderList = DB.getBuyerMyOrderList(usernameIntent);
+
+        ListView lv = (ListView) view.findViewById(R.id.listViewOrdersToBeRecProcessing);
+
+        ListAdapter adapter = new SimpleAdapter(getActivity(),orderList,R.layout.orderstoberecieved_processing_listitem,new String[]{"orderid","email","total","sellerid"},new int[]{R.id.OrdersToBeRecProcessingOrderId,R.id.ordersToBeRecProcessingEmail,R.id.ordersToBeRecListPrice,R.id.OrdersToBeRecProcessingBuyer});
+
+        lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Test");
+                builder.setMessage("Massage");
+                builder.show();
+            }
+        });
+
+
+
+        return view;
     }
 }

@@ -41,6 +41,7 @@ public class OrdersToMe extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(OrdersToMe.this, UserDashboard.class);
+                intent1.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent1);
             }
         });

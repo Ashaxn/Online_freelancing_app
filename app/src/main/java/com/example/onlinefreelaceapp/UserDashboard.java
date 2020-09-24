@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
 import com.example.onlinefreelaceapp.Common.PostRequest;
+import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
@@ -28,6 +29,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    DBHelper DB;
 
     RecyclerView featuredRecycler;
     RecyclerView featuredRecyclerTwo;
@@ -45,6 +48,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
+
+        DB = new DBHelper(this);
 
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
@@ -114,11 +119,21 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_my_orders:
                 Intent intent1 = new Intent(getApplicationContext(), OrdersToMe.class);
+                Intent intent5 = getIntent();
+                intent1.putExtra("username",intent5.getStringExtra("username"));
                 startActivity(intent1);
                 break;
             case R.id.nav_to_be_received:
                 Intent intent2 = new Intent(getApplicationContext(), OrdersToBeReceived.class);
+                intent2.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent2);
+                break;
+            case R.id.nav_revieworder:
+                Intent intent4 = getIntent();
+                String intentUsername = intent4.getStringExtra("username");
+                Intent intent3 = new Intent(getApplicationContext(), ReviewOrder.class);
+                intent3.putExtra("username",intentUsername);
+                startActivity(intent3);
                 break;
         }
 

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReviewOrder"
+    tools:context=".UpdateOrder"
     android:padding="30dp"
     android:background="@color/colorWhite">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/muli_black"
-            android:text="@string/revieworder"
+            android:text="Update Order"
             android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -101,7 +102,7 @@ I have an excellent command of writing English Articles on any topic (Specially 
             app:startIconTint="@color/colorAccent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtWorkingEmailOrder"
+                android:id="@+id/txtWorkingEmailUpdateOrder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/muli_light"
@@ -126,7 +127,7 @@ I have an excellent command of writing English Articles on any topic (Specially 
             app:startIconTint="@color/colorAccent">
 
             <EditText
-                android:id="@+id/txtOrderRequirement"
+                android:id="@+id/txtUpdateOrderRequirement"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:inputType="textMultiLine"
@@ -151,7 +152,7 @@ I have an excellent command of writing English Articles on any topic (Specially 
             app:startIconTint="@color/colorAccent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/linkOrderResource"
+                android:id="@+id/linkUpdateOrderResource"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/muli_light"
@@ -311,7 +312,7 @@ I have an excellent command of writing English Articles on any topic (Specially 
         </RadioGroup>
 
         <Button
-            android:id="@+id/btnAddOrder"
+            android:id="@+id/btnUpdateOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
@@ -321,7 +322,6 @@ I have an excellent command of writing English Articles on any topic (Specially 
 
 
     </LinearLayout>
-
 
 
 </ScrollView>

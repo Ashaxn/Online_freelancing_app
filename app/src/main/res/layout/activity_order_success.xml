@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".OrderSuccess">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/general_back_icon"
+          />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ordersuccessfull"
+                android:textColor="@color/colorAccent"
+                android:textSize="35sp"
+                android:fontFamily="@font/muli_black"
+                android:textAlignment="center"
+                android:layout_marginTop="-80dp"
+                android:gravity="center"
+                android:textAllCaps="true"/>
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/successful_icon"
+                android:layout_margin="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="seller will complete your order as soon as possible"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_light"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnOrderSuccess"
+                android:textColor="@color/colorWhite"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_button"
+                android:text="Back To Dashboard" />
+
+        </LinearLayout>
+
+  </LinearLayout>
+
+</LinearLayout>

@@ -4,33 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrdersToMe">
+    tools:context=".OrdersToMe"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@color/colorAccent">
 
         <RelativeLayout
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
+                android:layout_marginTop="10dp"
                 android:id="@+id/onbackbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/arrowback"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"/>
+                android:padding="10dp"
+                android:src="@drawable/general_back_icon" />
 
             <TextView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/title"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/muli_black"
+                android:textSize="25sp"
+                android:id="@+id/titleOrdersToMe"
                 android:layout_width="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
-                android:padding="@dimen/appbar_padding"
                 android:text="@string/title_activity_orders_to_me"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
         </RelativeLayout>
@@ -38,7 +44,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary" />
+            android:background="@color/colorAccent" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

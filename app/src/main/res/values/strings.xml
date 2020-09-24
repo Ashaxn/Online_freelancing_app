@@ -116,5 +116,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_orders_to_be_received">Orders To Be Received</string>
+    <string name="revieworder">Review Order</string>
+    <string name="titleReviewOrder">"Add responsible order information  to get better service. "</string>
+
+    <string name="orderdetails">Order Details</string>
+    <string name="orderworkingemail">Enter Working Email Address</string>
+    <string name="statereqorder">State Your Requirement</string>
+    <string name="ordersummery">Order Summery</string>
+    <string name="ordersummary">Order Summery</string>
+    <string name="subtotal">Sub Total($)</string>
+    <string name="servicecharge">Service Charge($)</string>
+    <string name="total">Total($)</string>
+    <string name="selectpaymentmethod">Select Payment Method</string>
+    <string name="EnterOrderResourceLink">Copy here Your Order Resources Drive Link</string>
+
+    <string name="ordersuccessfull">Order Added Successfully</string>
 
 </resources>

@@ -40,6 +40,7 @@ public class OrdersToBeReceived extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(OrdersToBeReceived.this, UserDashboard.class);
+                intent1.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent1);
             }
         });
