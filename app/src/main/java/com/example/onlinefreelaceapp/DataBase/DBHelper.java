@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase MyDB) {
 
         MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
-        MyDB.execSQL("create table postrequest(postmobile TEXT primary key,posttitle TEXT,postcategory TEXT,postyear INTEGER,postmonth INTEGER,postday INTEGER,postdesc TEXT,postbudget TEXT)");
+        MyDB.execSQL("create table postrequest(id INTEGER primary key AUTOINCREMENT, postmobile TEXT,posttitle TEXT,postcategory TEXT,postyear INTEGER,postmonth INTEGER,postday INTEGER,postdesc TEXT,postbudget TEXT)");
 
     }
 
