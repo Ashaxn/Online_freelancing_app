@@ -65,11 +65,12 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <ImageButton
+                <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/freelancer">
-                </ImageButton>
+                    android:src="@drawable/freelancer"
+                    android:id="@+id/insertgigimage">
+                </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,54 +85,67 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_title"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="@string/gigtitle"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="25dp"
                     android:background="@drawable/custom_input"/>
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_category"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:hint="@string/gigcategory"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/custom_input"/>
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_des"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:hint="@string/gigdes"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/custom_input" />
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_delinfo"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:hint="@string/deliveryinfo"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/custom_input" />
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_pricinginfo"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:hint="@string/pricinginfo"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/custom_input" />
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/creategig_contactinfo"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:hint="@string/condetails"
+                    android:inputType="text"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/custom_input" />
                 <Button
+                    android:id="@+id/savegigdetailsbutton"
                     android:layout_width="90dp"
                     android:layout_height="60dp"
                     android:text="@string/addthisgig">

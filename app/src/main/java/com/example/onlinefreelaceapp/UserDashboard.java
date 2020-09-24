@@ -120,6 +120,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 Intent intent2 = new Intent(getApplicationContext(), OrdersToBeReceived.class);
                 startActivity(intent2);
                 break;
+            case R.id.nav_my_gigs:
+                Intent intent3 = new Intent(getApplicationContext(), Display_Gigs_page.class);
+                startActivity(intent3);
+                break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

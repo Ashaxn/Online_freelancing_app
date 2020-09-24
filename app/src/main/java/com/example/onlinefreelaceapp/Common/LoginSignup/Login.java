@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
 import android.widget.EditText;
 import android.widget.Toast;
->>>>>>> 23442da48771a2fbc0a3302597c41ef4c82f7c8f
 
 import com.example.onlinefreelaceapp.Become_A_Seller;
 import com.example.onlinefreelaceapp.Common.RequestPostUserView;
@@ -22,13 +19,11 @@ import com.example.onlinefreelaceapp.UserDashboard;
 
 public class Login extends AppCompatActivity {
 
-<<<<<<< HEAD
+
     Button tempbt;
-=======
     EditText usernameLogin,passwordLogin;
     Button btnLogin;
     DBHelper DB;
->>>>>>> 23442da48771a2fbc0a3302597c41ef4c82f7c8f
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +31,8 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-<<<<<<< HEAD
+
         tempbt=findViewById(R.id.temporybtn);
-=======
         usernameLogin = (EditText) findViewById(R.id.loginUserName);
         passwordLogin = (EditText) findViewById(R.id.loginPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -66,8 +60,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
->>>>>>> 23442da48771a2fbc0a3302597c41ef4c82f7c8f
     }
 
     public void postRequestUserView(View view){
