@@ -48,7 +48,7 @@ public class PostARequestHome extends AppCompatActivity {
 
         //Get Post Count From the Table
         int countPost = dbHelper.postCount();
-        postcount.setText("You Posted "+countPost+" Posts.");
+        postcount.setText(""+countPost+" Requests");
 
         postadd.setOnClickListener(new View.OnClickListener() {
             @Override
