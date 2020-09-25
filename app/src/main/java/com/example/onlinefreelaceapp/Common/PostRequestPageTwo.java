@@ -1,14 +1,15 @@
 package com.example.onlinefreelaceapp.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.R;
 
@@ -16,7 +17,8 @@ public class PostRequestPageTwo extends AppCompatActivity {
 
     EditText postdesc,postbudget;
     Button submitpost;
-    DBHelper DB;
+    private DBHelper dbHelper;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +29,17 @@ public class PostRequestPageTwo extends AppCompatActivity {
         postdesc = (EditText) findViewById(R.id.txtPostDesc);
         postbudget = (EditText) findViewById(R.id.txtPostBudget);
         submitpost = (Button) findViewById(R.id.btnSubmitPostRequest);
+        context = this;
 
-        DB = new DBHelper(this);
+        dbHelper = new DBHelper(context);
 
         submitpost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String postdescription = postdesc.getText().toString();
                 String postbud = postbudget.getText().toString();
-                Intent intent = getIntent();
 
+                Intent intent = getIntent();
                 String postmobile = intent.getStringExtra("postmobile");
                 String posttitle = intent.getStringExtra("posttitle");
                 String postcategory = intent.getStringExtra("postcategory");
@@ -44,24 +47,10 @@ public class PostRequestPageTwo extends AppCompatActivity {
                 int postmonth = intent.getIntExtra("postmonth",0);
                 int postday = intent.getIntExtra("postday",0);
 
-                if(postmobile.equals("")||posttitle.equals("")||postcategory.equals("")||postdescription.equals("")||postbud.equals("")) {
-                    Toast.makeText(PostRequestPageTwo.this,"Required All Fields!",Toast.LENGTH_SHORT).show();
-                }else {
-                    Boolean checkPostRequests = DB.checkPostRequest(postmobile);
-                    if(checkPostRequests==false) {
-                        Boolean insert = DB.insertPostRequest(postmobile, posttitle, postcategory, postyear, postmonth, postday, postdescription, postbud);
-                        if(insert==false) {
-                            Toast.makeText(PostRequestPageTwo.this,"Request Post Not SUccess",Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(PostRequestPageTwo.this,"Post Requested Successful!",Toast.LENGTH_SHORT).show();
-                            Intent intent1 = new Intent(getApplicationContext(),AccountCreateSuccessfully.class);
-                            startActivity(intent1);
-                        }
-                    }else {
-                        Toast.makeText(PostRequestPageTwo.this,"Something Happened!!",Toast.LENGTH_SHORT).show();
-                    }
-                }
+                PostRequestModel postRequestModel = new PostRequestModel(postyear,postmonth,postday,posttitle,postmobile,postcategory,postdescription,postbud);
+                dbHelper.insertPostRequest(postRequestModel);
 
+                startActivity(new Intent(context,PostARequestHome.class));
             }
         });
     }
