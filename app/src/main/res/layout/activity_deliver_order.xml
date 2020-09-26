@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeliverOrder"
+    android:padding="30dp"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <ImageView
+            android:id="@+id/post_request_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/general_back_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/muli_black"
+            android:text="Deliver Order"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/titleReviewOrder"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Order Details"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TableRow
+            android:id="@+id/hrorderDeliver"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorDarkBlue"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deliverOrderId"
+            android:text="Order ID: #20"
+            android:textColor="@color/colorDarkRed"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/txtDeliverOrderDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="I store date from Calendar.getTimeInMilliseconds() in SQLite DB. I need to mark first rows by every month in SELECT statement, so I need convert time in milliseconds into any date format using SQLite function only. How can I avoid this?"
+            />
+
+
+        <Button
+            android:id="@+id/btnOrderResource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorDarkBlue"
+            android:text="Click Here To Get Order Resources"
+            android:textColor="@color/colorWhite"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Deliver Details"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TableRow
+            android:id="@+id/hrorderdetails"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorDarkBlue"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deliver Massage"
+            app:boxStrokeColor="@color/colorAccent"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorAccent"
+            app:hintTextColor="@color/colorAccent"
+            app:startIconDrawable="@drawable/editreq"
+            android:layout_marginTop="10dp"
+            app:startIconTint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/txtDeliverMsg"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="10dp"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Copy Here Resource File"
+            app:boxStrokeColor="@color/colorAccent"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorAccent"
+            app:hintTextColor="@color/colorAccent"
+            app:startIconDrawable="@drawable/ic_baseline_insert_drive_file_24"
+            app:startIconTint="@color/colorAccent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/linkDeliverResource"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/muli_light"
+                android:inputType="text"
+                android:textColor="@color/colorAccent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnDeliverOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:text="Deliver Order"
+            android:textColor="@color/colorWhite"
+            />
+
+    </LinearLayout>
+
+</ScrollView>

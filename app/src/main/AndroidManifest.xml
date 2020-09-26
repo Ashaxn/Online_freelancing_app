@@ -7,16 +7,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateOrder"></activity>
+        <activity android:name=".DeliverOrder"></activity>
+        <activity android:name=".OrdersToBeRecHome" />
+        <activity android:name=".OrdersToMeHome" />
+        <activity android:name=".OrdersToBeReceivedProcessing" />
+        <activity android:name=".OrdersToMeProcessing" />
+        <activity android:name=".UpdateOrder" />
         <activity android:name=".OrderSuccess" />
         <activity android:name=".AddPayment" />
-        <activity
-            android:name=".OrdersToBeReceived"
-            android:label="@string/title_activity_orders_to_be_received"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OrdersToMe"
-            android:parentActivityName=".UserDashboard" />
         <activity android:name=".ReviewOrder" />
         <activity android:name=".Common.BuyerRequestSuccessful" />
         <activity android:name=".Common.AccountCreateSuccessfully" />

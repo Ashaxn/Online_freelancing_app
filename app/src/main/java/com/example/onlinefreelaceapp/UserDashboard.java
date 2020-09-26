@@ -19,11 +19,6 @@ import com.example.onlinefreelaceapp.Common.PostRequest;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
-import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
-import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
-import com.example.onlinefreelaceapp.OrdersToBeReceived;
-import com.example.onlinefreelaceapp.OrdersToMe;
-import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -118,14 +113,15 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 startActivity(intent);
                 break;
             case R.id.nav_my_orders:
-                Intent intent1 = new Intent(getApplicationContext(), OrdersToMe.class);
+                Intent intent1 = new Intent(getApplicationContext(), OrdersToMeHome.class);
                 Intent intent5 = getIntent();
                 intent1.putExtra("username",intent5.getStringExtra("username"));
                 startActivity(intent1);
                 break;
             case R.id.nav_to_be_received:
-                Intent intent2 = new Intent(getApplicationContext(), OrdersToBeReceived.class);
-                intent2.putExtra("username",getIntent().getStringExtra("username"));
+                Intent intent2 = new Intent(getApplicationContext(), OrdersToBeRecHome.class);
+                Intent intent6 = getIntent();
+                intent2.putExtra("username",intent6.getStringExtra("username"));
                 startActivity(intent2);
                 break;
             case R.id.nav_revieworder:

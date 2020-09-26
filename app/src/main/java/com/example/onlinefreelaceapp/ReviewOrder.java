@@ -59,27 +59,33 @@ public class ReviewOrder extends AppCompatActivity {
                 String orderReq = requirement.getText().toString();
                 String resourceLink = driveLink.getText().toString();
 
+                long publishDate = System.currentTimeMillis();
+
 
                 int totPrice = Integer.parseInt(total_price.getText().toString());
                 int subTotal = Integer.parseInt(subtotal.getText().toString());
                 int serviceCharge = Integer.parseInt(service_charge.getText().toString());
 
-                if(workingEmail.equals("")) {
+                Orders order = new Orders(subTotal,serviceCharge,totPrice,gigId,workingEmail,resourceLink,orderReq,buyer,seller,publishDate,0);
+
+
+
+                if(order.getWork_email().equals("")) {
                     Toast.makeText(ReviewOrder.this,"Please Enter Working Email",Toast.LENGTH_SHORT).show();
-                }else if(orderReq.equals("")) {
+                }else if(order.getReq().equals("")) {
                     Toast.makeText(ReviewOrder.this,"Please Enter Order Requirement",Toast.LENGTH_SHORT).show();
                 }else {
 
-                    if(URLUtil.isValidUrl(resourceLink) && Patterns.WEB_URL.matcher(resourceLink).matches() || resourceLink.equals("")) {
-                        Boolean insert = DB.insertOrder(workingEmail, orderReq, resourceLink, subTotal, totPrice, serviceCharge, buyer, seller, gigId);
+                    if(URLUtil.isValidUrl(order.getResource()) && Patterns.WEB_URL.matcher(order.getResource()).matches() || order.getResource().equals("")) {
+                        Boolean insert = DB.insertOrder(order);
                         if (insert == true) {
                             Toast.makeText(ReviewOrder.this, "Order Successful!", Toast.LENGTH_SHORT).show();
                             Intent intentPaymentPage = new Intent(getApplicationContext(), OrderSuccess.class);
                             intentPaymentPage.putExtra("username",getIntent().getStringExtra("username"));
-                            intentPaymentPage.putExtra("buyerUsername", buyer);
-                            intentPaymentPage.putExtra("sellerUsername", seller);
-                            intentPaymentPage.putExtra("paymentTotal", totPrice);
-                            intentPaymentPage.putExtra("PaymentSub", subTotal);
+                            intentPaymentPage.putExtra("buyerUsername", order.getBuyer());
+                            intentPaymentPage.putExtra("sellerUsername", order.getSeller());
+                            intentPaymentPage.putExtra("paymentTotal", order.getTotal());
+                            intentPaymentPage.putExtra("PaymentSub", order.getSubTot());
                             startActivity(intentPaymentPage);
                         } else {
                             Toast.makeText(ReviewOrder.this, "Order Failed!", Toast.LENGTH_SHORT).show();

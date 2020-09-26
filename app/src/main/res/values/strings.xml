@@ -131,5 +131,7 @@
     <string name="EnterOrderResourceLink">Copy here Your Order Resources Drive Link</string>
 
     <string name="ordersuccessfull">Order Added Successfully</string>
+    <string name="OK">OK</string>
+    <string name="processingorder">Processing Order</string>
 
 </resources>
