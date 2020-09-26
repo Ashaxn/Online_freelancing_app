@@ -1,8 +1,11 @@
 package com.example.onlinefreelaceapp.Common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +37,18 @@ public class BuyerRequestHome extends AppCompatActivity {
         buyerrequestPosts = dbHelper.getAllRequests();
         BuyerRequestAdapter adapter = new BuyerRequestAdapter(context, R.layout.buyer_request_card, buyerrequestPosts);
         requestlistView.setAdapter(adapter);
+
+        requestlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final PostRequestModel postrequestmodel = buyerrequestPosts.get(position);
+
+                Intent intent = new Intent(view.getContext(), BuyerRequestUser.class);
+                intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
+                startActivity(intent);
+            }
+
+        });
 
     }
 
