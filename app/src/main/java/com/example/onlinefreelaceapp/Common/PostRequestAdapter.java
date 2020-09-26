@@ -38,7 +38,6 @@ public class PostRequestAdapter extends ArrayAdapter<PostRequestModel> {
         TextView budget = row.findViewById(R.id.budget);
         ImageView imageView = row.findViewById(R.id.onGoing);
 
-
         PostRequestModel postRequestModel = requestposts.get(position);
         title.setText(postRequestModel.getPosttitle());
         budget.setText(postRequestModel.getPostbudget());

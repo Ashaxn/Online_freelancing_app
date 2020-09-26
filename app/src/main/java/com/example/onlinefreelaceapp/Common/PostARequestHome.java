@@ -68,7 +68,9 @@ public class PostARequestHome extends AppCompatActivity {
                 builder.setNegativeButton("View", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(context,PostARequestHome.class));
+                        Intent intent = new Intent(context,RequestPostUserView.class);
+                        intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
+                        startActivity(intent);
                     }
                 });
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
