@@ -231,4 +231,36 @@ public class DBHelper extends SQLiteOpenHelper {
         return status;
     }
 
+
+    // Get All Requests Into a List
+    public List<PostRequestModel> getAllRequests(){
+
+        List<PostRequestModel> buyerPosts = new ArrayList();
+        SQLiteDatabase MyDB = getReadableDatabase();
+        String query = "SELECT * FROM "+POST_TABLE_NAME;
+
+        Cursor cursor = MyDB.rawQuery(query,null);
+
+        if(cursor.moveToFirst()){
+            do {
+                PostRequestModel postRequestModel = new PostRequestModel();
+
+                postRequestModel.setId(cursor.getInt(0));
+                postRequestModel.setPosttitle(cursor.getString(1));
+                postRequestModel.setPostmobile(cursor.getString(2));
+                postRequestModel.setPostcategory(cursor.getString(3));
+                postRequestModel.setPostyear(cursor.getInt(4));
+                postRequestModel.setPostmonth(cursor.getInt(5));
+                postRequestModel.setPostday(cursor.getInt(6));
+                postRequestModel.setPostdesc(cursor.getString(7));
+                postRequestModel.setPostbudget(cursor.getString(8));
+
+                buyerPosts.add(postRequestModel);
+            }while (cursor.moveToNext());
+        }
+        return buyerPosts;
+    }
+
+
+
 }
