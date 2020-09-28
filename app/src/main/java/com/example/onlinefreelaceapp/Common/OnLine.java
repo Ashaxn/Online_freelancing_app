@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.onlinefreelaceapp.R;
 import com.example.onlinefreelaceapp.UserDashboard;
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
+import com.facebook.stetho.Stetho;
 
 public class OnLine extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class OnLine extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Stetho.initializeWithDefaults(this);
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.online_app);
