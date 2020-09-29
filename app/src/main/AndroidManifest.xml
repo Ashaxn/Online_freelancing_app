@@ -56,6 +56,8 @@
         <activity android:name=".Common.BuyerRequestSendOffer" />
         <activity android:name=".Common.RequestPostUserView" />
         <activity android:name=".Common.PostRequestPageTwo" />
+        <activity android:name=".Common.BuyerRequestHome" />
+        <activity android:name=".Common.BuyerRequestUser" />
         <activity android:name=".Common.PostRequest" />
         <activity android:name=".Common.LoginSignup.SignUpPageTwo" />
         <activity android:name=".Common.LoginSignup.SignUp" />

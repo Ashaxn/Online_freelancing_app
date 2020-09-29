@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/muli_black"
-        android:text="Buyer Request"
+        android:text="Posted Requests"
         android:textAllCaps="true"
         android:textColor="@color/colorAccent"
         android:textSize="30sp" />
@@ -61,11 +61,11 @@
           android:textSize="15sp" />
 
       <TextView
+          android:id="@+id/viewpost_postTitle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="@string/post_req_title_userview"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -80,8 +80,8 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:text="Category"
           android:fontFamily="@font/muli_light"
-          android:text="@string/categories"
           android:textColor="@color/colorAccent"
           android:textSize="15sp" />
 
@@ -90,7 +90,7 @@
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="Graphic &amp; Design"
+          android:id="@+id/viewpost_postCategory"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -111,11 +111,11 @@
           android:textSize="15sp" />
 
       <TextView
+          android:id="@+id/viewpost_postMobile"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="077-2525435"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -137,11 +137,11 @@
 
 
       <TextView
+          android:id="@+id/viewpost_postDesc"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="@string/buyer_request_desc"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -157,18 +157,18 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:fontFamily="@font/muli_light"
           android:text="Deadline Date"
+          android:fontFamily="@font/muli_light"
           android:textColor="@color/colorAccent"
           android:textSize="15sp" />
 
 
       <TextView
+          android:id="@+id/viewpost_postDate"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="09/20/2020"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -191,11 +191,11 @@
 
 
       <TextView
+          android:id="@+id/viewpost_postBudget"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="15dp"
           android:fontFamily="@font/muli_light"
-          android:text="Rs.2000"
           android:textColor="@color/colorAccent"
           android:textSize="12sp" />
 
@@ -205,42 +205,6 @@
           android:background="@color/colorLightGrey"
           android:layout_marginTop="20dp"
           android:layout_marginBottom="40dp"/>
-
-
-
-      <Button
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:onClick="sendOfferSecond"
-          android:background="@drawable/rounded_button"
-          android:text="@string/post_req_send_offer"/>
-
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="15dp"
-          android:layout_marginBottom="20dp">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounder_button_blue_button"
-            android:text="@string/post_req_call"
-            android:textColor="@color/colorAccent" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounder_button_blue_button"
-            android:text="@string/post_req_message"
-            android:textColor="@color/colorAccent" />
-
-      </LinearLayout>
 
 
     </LinearLayout>

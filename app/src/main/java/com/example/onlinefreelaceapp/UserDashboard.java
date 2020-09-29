@@ -1,12 +1,5 @@
 package com.example.onlinefreelaceapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,9 +7,18 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.onlinefreelaceapp.Common.BuyerRequestHome;
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
 import com.example.onlinefreelaceapp.Common.PostRequest;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.Common.PostARequestHome;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
@@ -128,6 +130,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             case R.id.nav_to_be_received:
                 Intent intent2 = new Intent(getApplicationContext(), OrdersToBeReceived.class);
                 startActivity(intent2);
+                break;
+            case R.id.nav_buyer_request:
+                Intent intent3 = new Intent(getApplicationContext(), BuyerRequestHome.class);
+                startActivity(intent3);
                 break;
             case R.id.nav_my_gigs:
                 Intent intent3 = new Intent(getApplicationContext(), Display_Gigs_page.class);

@@ -61,6 +61,7 @@
                 app:startIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPostTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -85,6 +86,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPostMobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -129,6 +131,7 @@
 
 
             <DatePicker
+                android:id="@+id/txtPostDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:datePickerMode="spinner"
@@ -139,6 +142,7 @@
 
 
             <Button
+                android:id="@+id/btnNextPostRequest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
