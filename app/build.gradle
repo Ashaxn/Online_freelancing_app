@@ -30,10 +30,30 @@ dependencies {
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.1.0'
+
+    //new metirial library
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
+
+    //image crop library
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Stetho (DB viewer)
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    //custom snake bar
+    implementation 'com.github.matecode:Snacky:1.1.5'
+
+    //lottie Animation
+    implementation 'com.airbnb.android:lottie:3.3.1'
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.4.0@aar'
 }

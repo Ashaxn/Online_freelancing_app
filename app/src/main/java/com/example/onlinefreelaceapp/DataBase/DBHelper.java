@@ -6,21 +6,35 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.EditText;
+import android.net.Uri;
 
 import androidx.annotation.Nullable;
+
+import com.example.onlinefreelaceapp.adapter.GigHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "onlinefreelance.db";
 
+
     public DBHelper(Context context) {
         super(context, DB_NAME, null, 1);
     }
+
+    SQLiteDatabase localDatabase;
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
 
         MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
+        MyDB.execSQL("create table gigs(id integer primary key autoincrement," +
+                "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
+                "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT)");
+
+        localDatabase = MyDB;
         MyDB.execSQL("create table contactus(conid INTEGER primary key AUTOINCREMENT,name TEXT,Description TEXT)");
 
     }
@@ -28,10 +42,11 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL("drop Table if exists gigs");
         MyDB.execSQL("drop Table if exists contactus");
     }
 
-    public Boolean insertUser(String username,String fullname,String email,String mobilenumber,String province,int year,int month,int day,String password) {
+    public Boolean insertUser(String username, String fullname, String email, String mobilenumber, String province, int year, int month, int day, String password) {
 
         SQLiteDatabase MyDB = this.getWritableDatabase();
 
@@ -75,6 +90,101 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+//    ---------create a gig
+
+    public void saveGig(String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
+                        String contact, String imageUrl) {
+
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("insert into gigs(title,category,description ,deliver ,advanceAmount , secondPayment ,contact,image,timestamp ) " +
+                "values('" + title + "','" + category + "','" + description + "','" + delivery + "','" + advanceAmount + "','" +
+                secondPayment + "','" + contact + "','" + imageUrl + "','" + System.currentTimeMillis() + "')");
+
+
+    }
+
+
+    public void updateGig(int id, String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
+                          String contact, String imageUrl) {
+
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("update gigs set title='" + title + "',category='" + category + "', description='" + description + "' ,deliver ='" + delivery + "'," +
+                " advanceAmount ='" + advanceAmount + "', secondPayment ='" +
+                secondPayment + "',contact='" + contact + "',image='" + imageUrl + "',timestamp ='" + System.currentTimeMillis() + "' where id = '" + id + "'");
+
+
+    }
+
+
+    public List<GigHolder> getAllGigs() {
+        List<GigHolder> list = new ArrayList<>();
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        Cursor cursor = localDatabase.rawQuery("select * from gigs", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);   //0 is the number of id column in your database table
+            String title = cursor.getString(1);
+            String category = cursor.getString(2);
+            String description = cursor.getString(3);
+            String delivery = cursor.getString(4);
+            String advanceAmount = cursor.getString(5);
+            String secondPayment = cursor.getString(6);
+            String contact = cursor.getString(7);
+            String image = cursor.getString(8);
+            String time = cursor.getString(9);
+
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+            list.add(holder);
+        }
+
+        return list;
+    }
+
+    public GigHolder getGigsFromPrimaryKey(int primaryKey) {
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        Cursor cursor = localDatabase.rawQuery("select * from gigs where id='" + primaryKey + "'", null);
+        if (cursor.moveToNext()) {
+            int id = cursor.getInt(0);   //0 is the number of id column in your database table
+            String title = cursor.getString(1);
+            String category = cursor.getString(2);
+            String description = cursor.getString(3);
+            String delivery = cursor.getString(4);
+            String advanceAmount = cursor.getString(5);
+            String secondPayment = cursor.getString(6);
+            String contact = cursor.getString(7);
+            String image = cursor.getString(8);
+            String time = cursor.getString(9);
+
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+            return holder;
+        }
+
+        return null;
+    }
+
+
+    public void deleteGig(int primaryKey) {
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("delete from gigs where id=  '" + primaryKey + "' ");
+    }
+
+
     public Boolean insertContactUs(String name,String description){
 
         SQLiteDatabase MyDB = this.getWritableDatabase();
