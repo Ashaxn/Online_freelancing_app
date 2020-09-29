@@ -52,15 +52,7 @@ public class DeliverOrder extends AppCompatActivity {
         deliverOrderId.setText("Order ID: #"+getIntent().getStringExtra("id"));
 
 
-        btnOrderResource.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                String deliverDetails = txtDeliverOrderDetails.getText().toString();
-              //  String OrderId =
-
-            }
-        });
 
 
     }
