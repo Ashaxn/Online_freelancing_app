@@ -43,6 +43,7 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
         this.uiRefresh = uiRefresh;
     }
 
+
     public void addAll(List<GigHolder> locationList) {
         this.gigList.addAll(locationList);
         notifyDataSetChanged();

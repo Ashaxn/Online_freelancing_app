@@ -11,8 +11,6 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".favorites"></activity>
-        <activity android:name=".category" />
         <activity android:name=".buyerRequest" />
         <activity android:name=".contactus" />
         <activity android:name=".settings" />
