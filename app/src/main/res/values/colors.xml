@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#152025</color>
-    <color name="colorPrimaryDark">#171C1F</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorPrimary">#19647E</color>
+    <color name="colorPrimaryDark">#1F271B</color>
+    <color name="colorAccent">#28AFB0</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightBlue">#1FC6B2</color>
     <color name="colorDarkRed">#9D2F42</color>
     <color name="colorDarkBlue">#646687</color>
     <color name="colorLightGrey">#E1E6E2</color>
+    <color name="colorBlack">#000000</color>
 
     <!--For Dashboard-->
 

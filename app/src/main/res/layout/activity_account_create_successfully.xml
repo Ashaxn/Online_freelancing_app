@@ -48,13 +48,15 @@
             android:fontFamily="@font/muli_light"
             android:textAlignment="center"
             android:gravity="center"/>
-        
+
         <Button
+            android:id="@+id/btnLoginAtSuccess"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_button"
-            android:layout_marginTop="20dp"/>
+            android:onClick="loginPage"
+            android:text="@string/login" />
 
 
 

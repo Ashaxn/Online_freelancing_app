@@ -59,6 +59,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtFullname"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -82,6 +83,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -105,6 +107,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -128,6 +131,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtMobileNumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -151,6 +155,7 @@
                 app:endIconTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtProvince"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_light"
@@ -160,10 +165,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btnNextSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/next_page"
-                android:onClick="callNextSignUpScreen"
                 android:background="@drawable/rounded_button"
                 android:layout_marginTop="30dp"/>
 
