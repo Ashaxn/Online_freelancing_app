@@ -7,10 +7,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".favorites"></activity>
+        <activity android:name=".category" />
+        <activity android:name=".buyerRequest" />
+        <activity android:name=".contactus" />
+        <activity android:name=".settings" />
+        <activity android:name=".changePassword" />
+        <activity android:name=".aboutus" />
+        <activity android:name=".Common.requestsuccess" />
+        <activity android:name=".Common.contactusSuccess" />
+        <activity android:name=".Common.passwordChangeSuccess" />
         <activity
             android:name=".OrdersToBeReceived"
             android:label="@string/title_activity_orders_to_be_received"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrdersToMe"
             android:parentActivityName=".UserDashboard" />

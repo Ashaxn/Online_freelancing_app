@@ -23,6 +23,7 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperC
 import com.example.onlinefreelaceapp.OrdersToBeReceived;
 import com.example.onlinefreelaceapp.OrdersToMe;
 import com.example.onlinefreelaceapp.R;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -46,11 +47,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
 
+
+
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
         featuredRecyclerTwo = findViewById(R.id.featured_recycler_two);
         featuredRecyclerThree = findViewById(R.id.featured_recycler_three);
         menuIcon = findViewById(R.id.menu_icon);
+
 
         //Hooks Navigation
         drawerLayout = findViewById(R.id.drawer_layout);

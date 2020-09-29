@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.onlinefreelaceapp.R;
+import com.example.onlinefreelaceapp.changePassword;
+import com.example.onlinefreelaceapp.contactus;
+import com.example.onlinefreelaceapp.favorites;
 
 public class RetailerStartUpScreen extends AppCompatActivity {
 
@@ -27,5 +30,7 @@ public class RetailerStartUpScreen extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(),SignUp.class));
     }
 
-
+    public void callcontus(View view){
+        startActivity(new Intent(getApplicationContext(), changePassword.class));
+    }
 }
