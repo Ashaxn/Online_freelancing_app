@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.onlinefreelaceapp.Become_A_Seller;
 import com.example.onlinefreelaceapp.Common.RequestPostUserView;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.R;
@@ -18,6 +19,8 @@ import com.example.onlinefreelaceapp.UserDashboard;
 
 public class Login extends AppCompatActivity {
 
+
+    Button tempbt;
     EditText usernameLogin,passwordLogin;
     Button btnLogin;
     DBHelper DB;
@@ -28,6 +31,8 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
+        tempbt=findViewById(R.id.temporybtn);
         usernameLogin = (EditText) findViewById(R.id.loginUserName);
         passwordLogin = (EditText) findViewById(R.id.loginPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -56,11 +61,26 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void postRequestUserView(View view){
         startActivity(new Intent(getApplicationContext(), RequestPostUserView.class));
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        tempbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Login.this, Become_A_Seller.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
 

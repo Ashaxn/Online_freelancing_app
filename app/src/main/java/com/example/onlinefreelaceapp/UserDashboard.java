@@ -19,6 +19,11 @@ import com.example.onlinefreelaceapp.Common.PostRequest;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
+import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
+import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
+import com.example.onlinefreelaceapp.OrdersToBeReceived;
+import com.example.onlinefreelaceapp.OrdersToMe;
+import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -130,6 +135,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 Intent intent3 = new Intent(getApplicationContext(), ReviewOrder.class);
                 intent3.putExtra("username",intentUsername);
                 startActivity(intent3);
+                break;
+            case R.id.nav_my_gigs:
+                Intent intent7 = new Intent(getApplicationContext(), Display_Gigs_page.class);
+                startActivity(intent7);
                 break;
         }
 

@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.net.Uri;
 
 import androidx.annotation.Nullable;
+
+import com.example.onlinefreelaceapp.adapter.GigHolder;
+
 
 import com.example.onlinefreelaceapp.Orders;
 
@@ -37,13 +40,19 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME_ORDER_FINISHDATE = "finish";
 
 
-
     public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 
+    SQLiteDatabase localDatabase;
+
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
+
+        MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
+
+
+        MyDB.execSQL("drop Table if exists gigs");
 
         //create users table
         MyDB.execSQL("create table users(id INTEGER primary key  AUTOINCREMENT,username TEXT,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
@@ -70,13 +79,21 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL(TABLE_CREATE_QUERY_ORDER);
 
         //create order table
-       // MyDB.execSQL(("create table orders(id INTEGER primary key AUTOINCREMENT,workemail TEXT,requirement TEXT,resource TEXT,subtotal INTEGER,servicecharge INTEGER,total INTEGER,buyer TEXT,seller TEXT,gigid INTEGER)"));
+        // MyDB.execSQL(("create table orders(id INTEGER primary key AUTOINCREMENT,workemail TEXT,requirement TEXT,resource TEXT,subtotal INTEGER,servicecharge INTEGER,total INTEGER,buyer TEXT,seller TEXT,gigid INTEGER)"));
+
+
+        MyDB.execSQL("create table gigs(id integer primary key autoincrement," +
+                "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
+                "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT)");
+
+        localDatabase = MyDB;
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
+
 
         //drop table query orders
         String DROP_TABLE_ORDERS = "DROP TABLE IF EXISTS " +TABLE_NAME_ORDER;
@@ -132,6 +149,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
 
     public int getUserID(String username) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -348,7 +366,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //Cursor cursor = MyDB.rawQuery(query,null);
         Cursor cursor = MyDB.query(TABLE_NAME_ORDER,new String[]{COLUMN_NAME_ORDER_ID,COLUMN_NAME_ORDER_WORKEMAIL,COLUMN_NAME_ORDER_REQ,COLUMN_NAME_ORDER_RESOURCE,COLUMN_NAME_ORDER_SUBTOT,COLUMN_NAME_ORDER_SERVICECHARGE,COLUMN_NAME_ORDER_TOT,COLUMN_NAME_ORDER_BUYER,COLUMN_NAME_ORDER_SELLER,COLUMN_NAME_ORDER_GIG,COLUMN_NAME_ORDER_SUBMITDATE,COLUMN_NAME_ORDER_FINISHDATE},COLUMN_NAME_ORDER_ID+ "= ?",
-        new String[]{String.valueOf(id)},null,null,null);
+                new String[]{String.valueOf(id)},null,null,null);
 
 
         cursor.moveToFirst();
@@ -459,7 +477,96 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    //count
+    public void saveGig(String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
+                        String contact, String imageUrl) {
+
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("insert into gigs(title,category,description ,deliver ,advanceAmount , secondPayment ,contact,image,timestamp ) " +
+                "values('" + title + "','" + category + "','" + description + "','" + delivery + "','" + advanceAmount + "','" +
+                secondPayment + "','" + contact + "','" + imageUrl + "','" + System.currentTimeMillis() + "')");
+
+
+    }
+
+
+    public void updateGig(int id, String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
+                          String contact, String imageUrl) {
+
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("update gigs set title='" + title + "',category='" + category + "', description='" + description + "' ,deliver ='" + delivery + "'," +
+                " advanceAmount ='" + advanceAmount + "', secondPayment ='" +
+                secondPayment + "',contact='" + contact + "',image='" + imageUrl + "',timestamp ='" + System.currentTimeMillis() + "' where id = '" + id + "'");
+
+
+    }
+
+
+    public List<GigHolder> getAllGigs() {
+        List<GigHolder> list = new ArrayList<>();
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        Cursor cursor = localDatabase.rawQuery("select * from gigs", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);   //0 is the number of id column in your database table
+            String title = cursor.getString(1);
+            String category = cursor.getString(2);
+            String description = cursor.getString(3);
+            String delivery = cursor.getString(4);
+            String advanceAmount = cursor.getString(5);
+            String secondPayment = cursor.getString(6);
+            String contact = cursor.getString(7);
+            String image = cursor.getString(8);
+            String time = cursor.getString(9);
+
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+            list.add(holder);
+        }
+
+        return list;
+    }
+
+    public GigHolder getGigsFromPrimaryKey(int primaryKey) {
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        Cursor cursor = localDatabase.rawQuery("select * from gigs where id='" + primaryKey + "'", null);
+        if (cursor.moveToNext()) {
+            int id = cursor.getInt(0);   //0 is the number of id column in your database table
+            String title = cursor.getString(1);
+            String category = cursor.getString(2);
+            String description = cursor.getString(3);
+            String delivery = cursor.getString(4);
+            String advanceAmount = cursor.getString(5);
+            String secondPayment = cursor.getString(6);
+            String contact = cursor.getString(7);
+            String image = cursor.getString(8);
+            String time = cursor.getString(9);
+
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+            return holder;
+        }
+
+        return null;
+    }
+
+
+    public void deleteGig(int primaryKey) {
+        if (localDatabase == null) {
+            localDatabase = this.getWritableDatabase();
+        }
+
+        localDatabase.execSQL("delete from gigs where id=  '" + primaryKey + "' ");
+    }
+
 
 
 
