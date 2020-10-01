@@ -22,6 +22,7 @@ public class GigViewActivity extends AppCompatActivity {
     EditText txt_title, txt_category, txt_description, txt_delivery_info, txt_amount, txt_contact;
     private DBHelper dbHelper;
     private int primaryKey;
+    Button btnBye;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,17 @@ public class GigViewActivity extends AppCompatActivity {
             setData(gigHolder);
             primaryKey = extras.getInt(Constants.BUNDLE_ID);
         }
+
+        btnBye = (Button) findViewById(R.id.btn_buy);
+
+        btnBye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
     }
 
     private void setData(GigHolder holder) {

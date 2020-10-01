@@ -33,6 +33,7 @@
 
 
         <activity android:name=".Become_A_Seller" />
+        <activity android:name=".Create_A_Gig"/>
 
         <activity android:name=".ReviewOrder" />
         <activity android:name=".Common.BuyerRequestSuccessful" />

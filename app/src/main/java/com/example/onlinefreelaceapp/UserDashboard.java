@@ -21,8 +21,8 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
-import com.example.onlinefreelaceapp.OrdersToBeReceived;
-import com.example.onlinefreelaceapp.OrdersToMe;
+//import com.example.onlinefreelaceapp.OrdersToBeReceived;
+//import com.example.onlinefreelaceapp.OrdersToMe;
 import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 

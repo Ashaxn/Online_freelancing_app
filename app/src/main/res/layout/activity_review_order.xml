@@ -248,14 +248,6 @@ I have an excellent command of writing English Articles on any topic (Specially 
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/selectpaymentmethod"
-            android:textColor="@color/colorBlack"
-            android:textSize="15sp" />
-
         <TableRow
             android:id="@+id/hrpaymentmethod"
             android:layout_width="match_parent"
@@ -272,41 +264,11 @@ I have an excellent command of writing English Articles on any topic (Specially 
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/creditcard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Credit or Debit Card"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_credit_card_24"
-                    android:layout_alignParentRight="true"/>
-
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/paypal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PayPal"/>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/paypal_vector"
-                    android:layout_alignParentRight="true"/>
-
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"/>
 
         </RadioGroup>
 
