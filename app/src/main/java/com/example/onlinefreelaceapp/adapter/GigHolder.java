@@ -11,7 +11,7 @@ public class GigHolder {
 
 
 
-    public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image, String s, String time) {
+    public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image,  String time,String username) {
 
         this.primaryKey = primaryKey;
         this.title = title;
@@ -23,7 +23,6 @@ public class GigHolder {
         this.contact = contact;
         this.image = image;
         this.time = time;
-
         this.username = username;
 
     }
