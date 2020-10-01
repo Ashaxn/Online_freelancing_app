@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
 import android.net.Uri;
 
+import com.example.onlinefreelaceapp.Common.LoginSignup.UsersModel;
 import com.example.onlinefreelaceapp.Common.PostRequestModel;
 
 import java.util.ArrayList;
@@ -15,14 +15,12 @@ import java.util.List;
 
 import com.example.onlinefreelaceapp.adapter.GigHolder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
     public static final String DB_NAME = "onlinefreelance.db";
     private static final String POST_TABLE_NAME = "postrequest";
+    private static final String USERS_TABLE_NAME = "users";
 
 
     // Post Request Table Column Names
@@ -38,6 +36,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
+    // Users Column Names
+    private static final String Prof_User = "username";
+    private static final String Prof_Full = "fullname";
+    private static final String Prof_email = "email";
+    private static final String Prof_mobile = "mobilenumber";
+    private static final String Prof_prov = "province";
+    private static final String Prof_year = "year";
+    private static final String Prof_month = "month";
+    private static final String Prof_day = "day";
+    private static final String Prof_pass = "password";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
@@ -50,13 +58,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
 
-        MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
         MyDB.execSQL("create table gigs(id integer primary key autoincrement," +
                 "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
                 "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT)");
 
         localDatabase = MyDB;
         MyDB.execSQL("create table contactus(conid INTEGER primary key AUTOINCREMENT,name TEXT,Description TEXT)");
+        MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
 
 
         // Post Request Table Create
@@ -76,44 +84,131 @@ public class DBHelper extends SQLiteOpenHelper {
         //Post Request Table Run
         MyDB.execSQL(POST_REQUEST_TABLE_CREATE_QUERY);
 
+        // Users Table Create
+        String SIGN_UP_CREATE_QUERY = "CREATE TABLE "+USERS_TABLE_NAME+" " +
+                "("
+                +Prof_User+ " TEXT PRIMARY KEY UNIQUE ,"
+                +Prof_Full + " TEXT,"
+                +Prof_email + " TEXT,"
+                +Prof_mobile+ " TEXT,"
+                +Prof_prov+ " TEXT,"
+                +Prof_year+" INTEGER,"
+                +Prof_month+" INTEGER,"
+                +Prof_day+ " INTEGER,"
+                +Prof_pass + " TEXT" +
+                ");";
+
+        //Users Table Run
+        MyDB.execSQL(SIGN_UP_CREATE_QUERY);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int oldVersion, int newVersion) {
-        MyDB.execSQL("drop Table if exists users");
+
         MyDB.execSQL("drop Table if exists gigs");
         MyDB.execSQL("drop Table if exists contactus");
+
 
         //POST Request If Exists QUERY
         String DROP_POST_REQUEST_TABLE_QUERY = "DROP TABLE IF EXISTS "+ POST_TABLE_NAME;
         MyDB.execSQL(DROP_POST_REQUEST_TABLE_QUERY);
         onCreate(MyDB);
 
+        //Users If Exists QUERY
+        String DROP_SIGN_UP_TABLE_QUERY = "DROP TABLE IF EXISTS "+ USERS_TABLE_NAME;
+        MyDB.execSQL(DROP_SIGN_UP_TABLE_QUERY);
+        onCreate(MyDB);
+
     }
 
-    public Boolean insertUser(String username, String fullname, String email, String mobilenumber, String province, int year, int month, int day, String password) {
 
-        SQLiteDatabase MyDB = this.getWritableDatabase();
+    // Users Table (Add)
+    public boolean insertUsers(UsersModel usersModel){
+        SQLiteDatabase MyDB = getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username",username);
-        contentValues.put("fullname",fullname);
-        contentValues.put("email",email);
-        contentValues.put("mobilenumber",mobilenumber);
-        contentValues.put("province",province);
-        contentValues.put("year",year);
-        contentValues.put("month",month);
-        contentValues.put("day",day);
-        contentValues.put("password",password);
-        long result = MyDB.insert("users",null,contentValues);
-        if(result==-1) {
+
+        contentValues.put(Prof_User, usersModel.getUsername());
+        contentValues.put(Prof_Full,usersModel.getFullname());
+        contentValues.put(Prof_email,usersModel.getEmail());
+        contentValues.put(Prof_mobile,usersModel.getMobilenumber());
+        contentValues.put(Prof_prov,usersModel.getProvince());
+        contentValues.put(Prof_year,usersModel.getYear());
+        contentValues.put(Prof_month,usersModel.getMonth());
+        contentValues.put(Prof_day,usersModel.getDay());
+        contentValues.put(Prof_pass,usersModel.getPassword());
+
+        // Save Data To Table
+        long result = MyDB.insert(USERS_TABLE_NAME,null,contentValues);
+        MyDB.close();
+        if (result==1){
             return false;
-        }else {
+        }
+        else{
             return true;
         }
+
     }
 
-    public Boolean cheackUser(String username) {
+    // Get  Profile View
+    public UsersModel getProfileView(String username){
+        SQLiteDatabase MyDB = getWritableDatabase();
+
+        Cursor cursor = MyDB.query(USERS_TABLE_NAME,new String[]{Prof_User,Prof_Full,Prof_email,Prof_prov,Prof_year,Prof_month,Prof_day,Prof_mobile},Prof_User + "= ?",new String[]{username},null, null,null);
+
+        UsersModel usersModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            usersModel = new UsersModel(
+                    cursor.getString(0),               //Prof_user
+                    cursor.getString(1),            //Prof_full
+                    cursor.getString(2),            //Prof_email
+                    cursor.getString(3),            //prof_prov
+                    cursor.getInt(4),               //Prof_Year
+                    cursor.getInt(5),               //Prof_Month
+                    cursor.getInt(6),              //Prof_Day
+                    cursor.getString(7)             //Prof_mobile
+            );
+            return usersModel;
+        }
+        return null;
+    }
+
+    //Delete profile
+    public void deleteProfile(String username){
+        SQLiteDatabase MyDB = getWritableDatabase();
+        MyDB.delete(USERS_TABLE_NAME,Prof_User +" =?",new String[]{username});
+        MyDB.close();
+
+
+
+    }
+
+
+    // Update Profile
+    public  int updateProfile(UsersModel usersModel ){
+        SQLiteDatabase MyDB = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(Prof_Full,usersModel.getFullname());
+        contentValues.put(Prof_email,usersModel.getEmail());
+        contentValues.put(Prof_prov,usersModel.getProvince());
+        contentValues.put(Prof_year,usersModel.getYear());
+        contentValues.put(Prof_month,usersModel.getMonth());
+        contentValues.put(Prof_day,usersModel.getDay());
+        contentValues.put(Prof_mobile,usersModel.getMobilenumber());
+
+
+        int status = MyDB.update(USERS_TABLE_NAME,contentValues,Prof_User +" =?",new String[]{String.valueOf(usersModel.getUsername())});
+        MyDB.close();
+        return status;
+    }
+
+
+
+    public Boolean checkUser(String username) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
 
         Cursor cursor = MyDB.rawQuery("select * from users where username=?",new String[] {username});
@@ -135,6 +230,8 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
 
 
 
@@ -283,6 +380,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
+
+
 //    ---------create a gig
 
     public void saveGig(String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
@@ -393,30 +492,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Boolean checkUpdatePassword(String password) {
-        SQLiteDatabase MyDB = this.getReadableDatabase();
 
-        Cursor cursor = MyDB.rawQuery("select * from users where password=?",new String[] {password});
-        if(cursor.getCount()>0) {
-            return true;
-        }else {
-            return false;
-        }
 
-    }
-
-    public Boolean updatePassword(String password) {
-
-        SQLiteDatabase MyDB = this.getWritableDatabase();
+    public int updatePassword(UsersModel usersModel) {
+        SQLiteDatabase MyDB = getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("password",password);
-        long result = MyDB.update("users",contentValues,"password= ?",new String[] {password});
-        if(result==-1) {
-            return false;
-        }else {
-            return true;
-        }
+        contentValues.put(Prof_pass,usersModel.getPassword());
+
+        int status = MyDB.update(USERS_TABLE_NAME,contentValues,Prof_User +" =?",new String[]{String.valueOf(usersModel.getUsername())});
+        return status;
+
     }
 
 

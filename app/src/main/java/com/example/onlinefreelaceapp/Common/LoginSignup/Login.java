@@ -42,6 +42,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String username = usernameLogin.getText().toString();
                 String pass = passwordLogin.getText().toString();
 
@@ -51,7 +52,9 @@ public class Login extends AppCompatActivity {
                     Boolean check = DB.checkUsernamePassword(username,pass);
                     if(check==true) {
                         Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),UserDashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                        intent.putExtra("username",username);
+                        intent.putExtra("password",pass);
                         startActivity(intent);
                     }else {
                         Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();

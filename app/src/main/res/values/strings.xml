@@ -27,7 +27,7 @@
     <string name="buyer_request_successful">Request Successful</string>
     <string name="account_created_success">Your Account Created Successful</string>
     <string name="buyer_request_posted_success">Your Buyer Request Posted Successful</string>
-    <string name="password_change_successful_msg">Your password has been successfully changed</string>
+    <string name="password_change_successful_msg">Your password has been successfully changed please log out and log back in using the new password</string>
     <string name="pass_change_successful">Change Password Successful</string>
     <string name="contactus_successful_msg">Message successfully sent</string>
     <string name="conus_successful">Contact Us</string>
@@ -200,6 +200,7 @@
     <!-- settings page -->
     <string name="uname">Username</string>
     <string name="logoutbt">Log Out</string>
+    <string name="deact">Deactivate account</string>
 
     <!--contact us page -->
     <string name="contact1">Contact Us</string>

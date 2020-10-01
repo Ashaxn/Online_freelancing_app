@@ -50,8 +50,14 @@ public class contactus extends AppCompatActivity {
                     if(insert1==false) {
                         Toast.makeText(contactus.this,"Sign Up Not Success!",Toast.LENGTH_SHORT).show();
                     }else {
+
                         Toast.makeText(contactus.this,"Sign Up Successful!",Toast.LENGTH_SHORT).show();
+                        Intent intent = getIntent();
+                        String username = intent.getStringExtra("username");
+                        String pass = intent.getStringExtra("password");
                         Intent intent1 = new Intent(getApplicationContext(), contactusSuccess.class);
+                        intent1.putExtra("username",username);
+                        intent1.putExtra("password",pass);
                         startActivity(intent1);
                     }
 
