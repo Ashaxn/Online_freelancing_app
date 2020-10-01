@@ -21,16 +21,13 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
-//import com.example.onlinefreelaceapp.OrdersToBeReceived;
-//import com.example.onlinefreelaceapp.OrdersToMe;
+import
 import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
 public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
-    DBHelper DB;
 
     RecyclerView featuredRecycler;
     RecyclerView featuredRecyclerTwo;
@@ -41,6 +38,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     //Drawer Menu
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private DBHelper dbHelper;
 
 
     @Override
@@ -49,7 +47,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
 
-        DB = new DBHelper(this);
+
+        dbHelper = new DBHelper(this);
 
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);
@@ -140,6 +139,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 Intent intent7 = new Intent(getApplicationContext(), Display_Gigs_page.class);
                 startActivity(intent7);
                 break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.onlinefreelaceapp.Become_A_Seller;
 import com.example.onlinefreelaceapp.Common.RequestPostUserView;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.HelperClasses.Constants;
+import com.example.onlinefreelaceapp.HelperClasses.PrefManager;
 import com.example.onlinefreelaceapp.R;
 import com.example.onlinefreelaceapp.UserDashboard;
 
@@ -50,6 +52,7 @@ public class Login extends AppCompatActivity {
                 }else {
                     Boolean check = DB.checkUsernamePassword(username,pass);
                     if(check==true) {
+                        new PrefManager(Login.this).setPreference(Constants.CURRENT_USER,DB.getFullName(username));
                         Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),UserDashboard.class);
                         intent.putExtra("username",username);

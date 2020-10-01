@@ -23,6 +23,9 @@ public class Constants {
 
     public static final String BUNDLE_ID = "bdlPK";
 
+    public static final String CURRENT_USER = "prefCUSer";
+
+
     //create query for table
     public static final String CREATE_TABLE = "CREATE TABLE" + TABLE_NAME + "("
             + G_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"

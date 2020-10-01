@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.Constants;
@@ -23,6 +24,7 @@ public class GigViewActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private int primaryKey;
     Button btnBye;
+    private TextView lbl_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class GigViewActivity extends AppCompatActivity {
         txt_delivery_info = findViewById(R.id.txt_delivery_info);
         txt_amount = findViewById(R.id.txt_amount);
         txt_contact = findViewById(R.id.txt_contact);
+        lbl_username = findViewById(R.id.lbl_username);
         findViewById(R.id.btn_buy).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +64,6 @@ public class GigViewActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void setData(GigHolder holder) {
@@ -73,6 +75,8 @@ public class GigViewActivity extends AppCompatActivity {
             txt_delivery_info.setText(holder.getDeliveryInfo());
             txt_amount.setText(Utils.getDecimal(holder.getTotal()));
             txt_contact.setText(holder.getContact());
+            lbl_username.setText("Post by : "+holder.getUsername());
+
         }
     }
 }

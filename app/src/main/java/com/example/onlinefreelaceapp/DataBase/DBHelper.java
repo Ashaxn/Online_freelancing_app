@@ -7,21 +7,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
-
+import com.example.onlinefreelaceapp.Orders;
 import androidx.annotation.Nullable;
+import com.example.onlinefreelaceapp.HelperClasses.Constants;
+import com.example.onlinefreelaceapp.HelperClasses.PrefManager;
 
 import com.example.onlinefreelaceapp.adapter.GigHolder;
 
-
-import com.example.onlinefreelaceapp.Orders;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.HashMap;
 
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "onlinefreelance.db";
+    private PrefManager prefManager;
+
 
     public static final int VERSION = 2;
 
@@ -42,6 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
+        prefManager = new PrefManager(context);
     }
 
     SQLiteDatabase localDatabase;
@@ -49,16 +51,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
 
-       // MyDB.execSQL("create table users(username TEXT primary key,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
-
-
-        MyDB.execSQL("drop Table if exists gigs");
-
         //create users table
         MyDB.execSQL("create table users(id INTEGER primary key  AUTOINCREMENT,username TEXT,fullname TEXT,email TEXT,mobilenumber TEXT,province TEXT,year INTEGER,month INTEGER,day INTEGER,password TEXT)");
 
+        MyDB.execSQL("create table gigs(id integer primary key autoincrement," +
+                "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
+                "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT,username TEXT)");
 
-        //create table orders
         String TABLE_CREATE_QUERY_ORDER = "CREATE TABLE "+TABLE_NAME_ORDER+ " "+
                 "("
                 +COLUMN_NAME_ORDER_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -78,13 +77,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //run query
         MyDB.execSQL(TABLE_CREATE_QUERY_ORDER);
 
-        //create order table
-        // MyDB.execSQL(("create table orders(id INTEGER primary key AUTOINCREMENT,workemail TEXT,requirement TEXT,resource TEXT,subtotal INTEGER,servicecharge INTEGER,total INTEGER,buyer TEXT,seller TEXT,gigid INTEGER)"));
 
-
-        MyDB.execSQL("create table gigs(id integer primary key autoincrement," +
-                "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
-                "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT)");
 
         localDatabase = MyDB;
 
@@ -93,7 +86,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
         MyDB.execSQL("drop Table if exists users");
-
+        MyDB.execSQL("drop Table if exists gigs");
 
         //drop table query orders
         String DROP_TABLE_ORDERS = "DROP TABLE IF EXISTS " +TABLE_NAME_ORDER;
@@ -105,20 +98,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public Boolean insertUser(String username,String fullname,String email,String mobilenumber,String province,int year,int month,int day,String password) {
+    public Boolean insertUser(String username, String fullname, String email, String mobilenumber, String province, int year, int month, int day, String password) {
 
         SQLiteDatabase MyDB = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username",username);
-        contentValues.put("fullname",fullname);
-        contentValues.put("email",email);
-        contentValues.put("mobilenumber",mobilenumber);
-        contentValues.put("province",province);
-        contentValues.put("year",year);
-        contentValues.put("month",month);
-        contentValues.put("day",day);
-        contentValues.put("password",password);
+        contentValues.put("username", username);
+        contentValues.put("fullname", fullname);
+        contentValues.put("email", email);
+        contentValues.put("mobilenumber", mobilenumber);
+        contentValues.put("province", province);
+        contentValues.put("year", year);
+        contentValues.put("month", month);
+        contentValues.put("day", day);
+        contentValues.put("password", password);
         long result = MyDB.insert("users",null,contentValues);
         if(result==-1) {
             return false;
@@ -130,22 +123,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public Boolean cheackUser(String username) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
 
-        Cursor cursor = MyDB.rawQuery("select * from users where username=?",new String[] {username});
+        Cursor cursor = MyDB.rawQuery("select * from users where username=?", new String[]{username});
 
-        if(cursor.getCount()>0) {
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public Boolean checkUsernamePassword(String username,String password) {
+    public Boolean checkUsernamePassword(String username, String password) {
         SQLiteDatabase MyDB = this.getReadableDatabase();
 
-        Cursor cursor = MyDB.rawQuery("select * from users where username=? and password=?",new String[] {username,password});
-        if(cursor.getCount()>0) {
+        Cursor cursor = MyDB.rawQuery("select * from users where username=? and password=?", new String[]{username, password});
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -477,6 +470,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+
+
+
+
+
+
+
+//    ---------create a gig
+
+
+    public String getFullName(String username){
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+
+        Cursor cursor = MyDB.rawQuery("select * from users where username=?", new String[]{username});
+
+        if (cursor.moveToNext()) {
+            return cursor.getString(1);
+        } else {
+            return null;
+        }
+    }
+
+
     public void saveGig(String title, String category, String description, String delivery, String advanceAmount, String secondPayment,
                         String contact, String imageUrl) {
 
@@ -484,9 +500,9 @@ public class DBHelper extends SQLiteOpenHelper {
             localDatabase = this.getWritableDatabase();
         }
 
-        localDatabase.execSQL("insert into gigs(title,category,description ,deliver ,advanceAmount , secondPayment ,contact,image,timestamp ) " +
+        localDatabase.execSQL("insert into gigs(title,category,description ,deliver ,advanceAmount , secondPayment ,contact,image,timestamp,username ) " +
                 "values('" + title + "','" + category + "','" + description + "','" + delivery + "','" + advanceAmount + "','" +
-                secondPayment + "','" + contact + "','" + imageUrl + "','" + System.currentTimeMillis() + "')");
+                secondPayment + "','" + contact + "','" + imageUrl + "','" + System.currentTimeMillis() + "','" + prefManager.getString(Constants.CURRENT_USER) + "')");
 
 
     }
@@ -501,7 +517,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         localDatabase.execSQL("update gigs set title='" + title + "',category='" + category + "', description='" + description + "' ,deliver ='" + delivery + "'," +
                 " advanceAmount ='" + advanceAmount + "', secondPayment ='" +
-                secondPayment + "',contact='" + contact + "',image='" + imageUrl + "',timestamp ='" + System.currentTimeMillis() + "' where id = '" + id + "'");
+                secondPayment + "',contact='" + contact + "',image='" + imageUrl + "',timestamp ='" + System.currentTimeMillis() + "',username='" + prefManager.getString(Constants.CURRENT_USER) + "' where id = '" + id + "'");
 
 
     }
@@ -525,8 +541,10 @@ public class DBHelper extends SQLiteOpenHelper {
             String contact = cursor.getString(7);
             String image = cursor.getString(8);
             String time = cursor.getString(9);
+            String username = cursor.getString(10);
 
-            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time, username);
             list.add(holder);
         }
 
@@ -550,8 +568,9 @@ public class DBHelper extends SQLiteOpenHelper {
             String contact = cursor.getString(7);
             String image = cursor.getString(8);
             String time = cursor.getString(9);
+            String username = cursor.getString(10);
 
-            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time);
+            GigHolder holder = new GigHolder(id, title, category, description, delivery, advanceAmount, secondPayment, contact, Uri.parse(image), time, username);
             return holder;
         }
 
@@ -566,8 +585,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         localDatabase.execSQL("delete from gigs where id=  '" + primaryKey + "' ");
     }
-
-
 
 
 }

@@ -8,7 +8,8 @@ public class GigHolder {
     private String title, category, description, deliveryInfo, advanceAmount, secondAmount, contact, time, username;
     private Uri image;
 
-    public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image, String time) {
+    public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image,  String time,String username) {
+
         this.primaryKey = primaryKey;
         this.title = title;
         this.category = category;
@@ -19,7 +20,7 @@ public class GigHolder {
         this.contact = contact;
         this.image = image;
         this.time = time;
-        //this.username = username;
+        this.username = username;
     }
 
     public int getPrimaryKey() {
@@ -105,7 +106,6 @@ public class GigHolder {
     public double getTotal() {
         return Double.parseDouble(advanceAmount) + Double.parseDouble(secondAmount);
     }
-
     public String getUsername() {
         return username;
     }

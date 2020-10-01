@@ -149,7 +149,11 @@ public class Create_A_Gig extends AppCompatActivity {
             return;
         } else if (!Utils.validateField(txt_description, "Enter gig description !")) {
             return;
+
+        } else if (!Utils.validateField(txt_delivery_info, "Enter delivery infomations !")) {
+
         } else if (!Utils.validateField(txt_delivery_info, "Enter delivery information !")) {
+
             return;
         } else if (!Utils.validateField(txt_advance_amount, "Enter advance price !")) {
             return;

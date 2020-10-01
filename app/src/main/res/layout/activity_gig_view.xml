@@ -48,6 +48,18 @@
                     android:src="@drawable/freelancer"></de.hdodenhof.circleimageview.CircleImageView>
 
                 <TextView
+                    android:id="@+id/lbl_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/fetching_data"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
