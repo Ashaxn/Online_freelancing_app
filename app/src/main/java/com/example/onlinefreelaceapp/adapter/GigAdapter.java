@@ -74,11 +74,19 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
         holder.ll_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                if(!isAdminView){
                    Intent intent = new Intent(activity, GigViewActivity.class);
                    intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
                    activity.startActivity(intent);
                }
+
+                if(!isAdminView){
+                    Intent intent = new Intent(activity, GigViewActivity.class);
+                    intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
+                    activity.startActivity(intent);
+                }
+
             }
         });
 

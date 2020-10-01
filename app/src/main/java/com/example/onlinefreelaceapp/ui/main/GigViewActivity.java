@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.TextView;
+
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.Constants;
@@ -24,6 +26,7 @@ public class GigViewActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private int primaryKey;
     private TextView lbl_username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,7 @@ public class GigViewActivity extends AppCompatActivity {
             txt_amount.setText(Utils.getDecimal(holder.getTotal()));
             txt_contact.setText(holder.getContact());
             lbl_username.setText("Post by : "+holder.getUsername());
+
         }
     }
 }
