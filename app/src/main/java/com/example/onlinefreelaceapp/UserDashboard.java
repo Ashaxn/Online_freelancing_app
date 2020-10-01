@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
 import com.example.onlinefreelaceapp.Common.PostRequest;
+import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
@@ -38,6 +39,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     //Drawer Menu
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private DBHelper dbHelper;
 
 
     @Override
@@ -45,6 +47,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_user_dashboard);
+
+        dbHelper = new DBHelper(this);
 
         //Hooks
         featuredRecycler = findViewById(R.id.featured_recycler);

@@ -43,4 +43,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Stetho (DB viewer)
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    //custom snake bar
+    implementation 'com.github.matecode:Snacky:1.1.5'
+
+    //lottie Animation
+    implementation 'com.airbnb.android:lottie:3.3.1'
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.4.0@aar'
 }
