@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.onlinefreelaceapp.Become_A_Seller;
 import com.example.onlinefreelaceapp.Common.RequestPostUserView;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
@@ -64,6 +66,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void postRequestUserView(View view){

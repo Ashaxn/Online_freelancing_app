@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/post_request_back_button"
+            android:id="@+id/post_request_update_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/muli_black"
-            android:text="@string/_post_request_header_name"
+            android:text="UPDATE REQUESTS"
             android:textAllCaps="true"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
@@ -59,13 +59,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="I Need a Professional Logo Designer"
                 app:boxStrokeColor="@color/colorAccent"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_postTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
@@ -89,13 +89,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="077-2525435"
                 android:layout_marginTop="2dp"
                 app:hintTextColor="@color/colorAccent"
                 app:boxStrokeColor="@color/colorAccent"
                 app:boxStrokeWidthFocused="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_postMobile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
@@ -114,26 +114,25 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-
-                android:id="@+id/post_request_categories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:hint="Graphic &amp; Design"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="2dp"
                 app:hintTextColor="@color/colorAccent"
                 app:boxStrokeColor="@color/colorAccent"
-                app:boxStrokeWidthFocused="2dp"
-                app:startIconTint="@color/colorAccent"
-                app:endIconMode="dropdown_menu"
-                app:endIconTint="@color/colorAccent">
+                app:boxStrokeWidthFocused="2dp">
 
-                <AutoCompleteTextView
-                    android:id="@+id/dropdown_menu_autocomplete"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_postCategory"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/colorAccent"
+                    android:inputType="text"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
             <TextView
@@ -148,6 +147,7 @@
 
 
             <DatePicker
+                android:id="@+id/update_postDatePicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:datePickerMode="spinner"
@@ -163,15 +163,30 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="15dp" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="104dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/custom_borders"
-                android:fontFamily="sans-serif"
-                android:text="@string/buyer_request_desc"
-                android:textColor="@color/colorAccent"
-                android:textSize="15dp" />
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="@color/colorAccent"
+                android:layout_marginTop="20dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconMode="clear_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="300"
+                app:endIconTint="@color/colorAccent"
+                app:hintTextColor="@color/colorAccent"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_postDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="159dp"
+                    android:fontFamily="@font/muli_light"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:textColor="@color/colorAccent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -186,13 +201,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Rs.2000"
                 android:layout_marginTop="2dp"
                 app:hintTextColor="@color/colorAccent"
                 app:boxStrokeColor="@color/colorAccent"
                 app:boxStrokeWidthFocused="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_postBudget"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
@@ -205,6 +220,7 @@
 
 
             <Button
+                android:id="@+id/update_postBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -212,6 +228,7 @@
                 android:text="Update"/>
 
             <Button
+                android:id="@+id/update_postCancelBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

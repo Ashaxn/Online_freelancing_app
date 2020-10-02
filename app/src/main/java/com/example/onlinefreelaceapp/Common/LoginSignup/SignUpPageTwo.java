@@ -46,6 +46,7 @@ public class SignUpPageTwo extends AppCompatActivity {
                 String password1 = password.getText().toString();
                 String repassword1 = repassword.getText().toString();
                 Intent intent = getIntent();
+
                 String username = intent.getStringExtra("username");
                 String fullname = intent.getStringExtra("fullname");
                 String email = intent.getStringExtra("email");
