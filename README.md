@@ -9,7 +9,7 @@
 <li>SQLite</li>
 </ul>
 
-## Features
+## Functions
 
 <ul>
 <li>User Account Function</li>
