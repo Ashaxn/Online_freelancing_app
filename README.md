@@ -22,4 +22,4 @@ The main objective of this project is to provide the environment for clients and
 <li>Payments Function</li>
 </ul>
 
-## Team Members :alien:
+## Team Members :clap:
