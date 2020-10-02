@@ -13,13 +13,30 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.main.ViewAsCustomerActivity"></activity>
+        <activity android:name=".Common.LoginSignup.viewProfile"></activity>
+        <activity android:name=".Common.LoginSignup.updateUser" />
+        <activity android:name=".buyerRequest" />
+        <activity android:name=".contactus" />
+        <activity android:name=".settings" />
+        <activity android:name=".changePassword" />
+        <activity android:name=".aboutus" />
+        <activity android:name=".Common.requestsuccess" />
+        <activity android:name=".Common.contactusSuccess" />
+        <activity android:name=".Common.passwordChangeSuccess" />
+        <activity android:name=".ui.main.ViewAsCustomerActivity" />
         <activity android:name=".ui.main.GigViewActivity" />
         <activity android:name=".Display_Gigs_page">
             <!--            <intent-filter>-->
             <!--                <action android:name="android.intent.action.MAIN" />-->
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
             <!--                <category android:name="android.intent.category.LAUNCHER" />-->
             <!--            </intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <activity android:name=".DeliverOrder"></activity>

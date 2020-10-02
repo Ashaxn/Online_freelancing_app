@@ -1,11 +1,14 @@
 package com.example.onlinefreelaceapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +17,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.onlinefreelaceapp.Common.AccountCreateSuccessfully;
 import com.example.onlinefreelaceapp.Common.BuyerRequestHome;
+import com.example.onlinefreelaceapp.Common.LoginSignup.Login;
 import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
+import com.example.onlinefreelaceapp.Common.LoginSignup.UsersModel;
 import com.example.onlinefreelaceapp.Common.PostRequest;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.Common.PostARequestHome;
@@ -24,91 +30,114 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperCla
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
 import com.example.onlinefreelaceapp.R;
+import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
+import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
+
+import com.example.onlinefreelaceapp.R;
+
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    RecyclerView featuredRecycler;
-    RecyclerView featuredRecyclerTwo;
-    RecyclerView featuredRecyclerThree;
-    RecyclerView.Adapter adapter;
-    ImageView menuIcon;
-
-    //Drawer Menu
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    private DBHelper dbHelper;
+        RecyclerView featuredRecycler;
+        RecyclerView featuredRecyclerTwo;
+        RecyclerView featuredRecyclerThree;
+        RecyclerView.Adapter adapter;
+        ImageView menuIcon,setting;
+        UsersModel usersModel;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_user_dashboard);
+        //Drawer Menu
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
+        private DBHelper dbHelper;
 
 
-        dbHelper = new DBHelper(this);
-
-        //Hooks
-        featuredRecycler = findViewById(R.id.featured_recycler);
-        featuredRecyclerTwo = findViewById(R.id.featured_recycler_two);
-        featuredRecyclerThree = findViewById(R.id.featured_recycler_three);
-        menuIcon = findViewById(R.id.menu_icon);
-
-        //Hooks Navigation
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.navigation_view);
+        @SuppressLint("WrongViewCast")
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            setContentView(R.layout.activity_user_dashboard);
 
 
-        navigationDrawer();
-        featuredRecycler();
-        featuredRecyclerTwo();
-        featuredRecyclerThree();
-
-    }
-
-    public void callLoginSignupScreen(View view){
-
-        startActivity(new Intent(getApplicationContext(), RetailerStartUpScreen.class));
-
-    }
 
 
-    //Navigation Drawer
+            dbHelper = new DBHelper(this);
 
-    private void navigationDrawer() {
+            //Hooks
+            featuredRecycler = findViewById(R.id.featured_recycler);
+            featuredRecyclerTwo = findViewById(R.id.featured_recycler_two);
+            featuredRecyclerThree = findViewById(R.id.featured_recycler_three);
+            menuIcon = findViewById(R.id.menu_icon);
+            setting = (ImageView) findViewById(R.id.settings);
+
+
+            //Hooks Navigation
+            drawerLayout = findViewById(R.id.drawer_layout);
+            navigationView = findViewById(R.id.navigation_view);
+
+
+            navigationDrawer();
+            featuredRecycler();
+            featuredRecyclerTwo();
+            featuredRecyclerThree();
+
+            setting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = getIntent();
+                    String username = intent.getStringExtra("username");
+                    String pass = intent.getStringExtra("password");
+                    Intent intent1 = new Intent(getApplicationContext(), settings.class);
+                    intent1.putExtra("username",username);
+                    intent1.putExtra("password",pass);
+                    startActivity(intent1);
+
+                }
+            });
+
+
+        }
+
+
+
 
         //Navigation Drawer
-        navigationView.bringToFront();
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setCheckedItem(R.id.nav_home);
 
-        menuIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(drawerLayout.isDrawerVisible(GravityCompat.START)){
-                    drawerLayout.closeDrawer(GravityCompat.START);
+        private void navigationDrawer() {
+
+            //Navigation Drawer
+            navigationView.bringToFront();
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.setCheckedItem(R.id.nav_home);
+
+            menuIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(drawerLayout.isDrawerVisible(GravityCompat.START)){
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                    }
+                    else drawerLayout.openDrawer(GravityCompat.START);
                 }
-                else drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+            });
 
 
-    }
+        }
 
-    @Override
-    public void onBackPressed() {
+        @Override
+        public void onBackPressed() {
 
-        if(drawerLayout.isDrawerVisible(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else
-        super.onBackPressed();
-    }
+            if(drawerLayout.isDrawerVisible(GravityCompat.START)){
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else
+            super.onBackPressed();
+        }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         switch (menuItem.getItemId()){
             case R.id.nav_home:
@@ -204,6 +233,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredRecyclerThree.setAdapter(adapter);
 
     }
+
+
+
+
 
 
 }

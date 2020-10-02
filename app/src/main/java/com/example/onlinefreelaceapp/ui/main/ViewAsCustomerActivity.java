@@ -50,7 +50,7 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
-        loadGigs();
+        loaddigitalGigs();
 
         findViewById(R.id.btn_switch).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
     }
 
 
-    private void loadGigs() {
+    private void loaddigitalGigs() {
 
 
         new AsyncTask<Void, Void, Void>() {
@@ -117,7 +117,7 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
     @Override
     protected void onResume() {
         if (isOnResume) {
-            loadGigs();
+            loaddigitalGigs();
         }
         super.onResume();
     }
@@ -130,6 +130,6 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
 
     @Override
     public void refresh() {
-        loadGigs();
+        loaddigitalGigs();
     }
 }
