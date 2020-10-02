@@ -25,4 +25,4 @@ The main objective of this project is to provide the environment for clients and
 ## Team Members :clap:
 
 
-> blockquote [Ashan Subawickrama](https://www.quora.com)
+> [Ashan Subawickrama](https://www.quora.com)
