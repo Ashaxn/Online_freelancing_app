@@ -24,7 +24,9 @@ The main objective of this project is to provide the environment for clients and
 
 ## Team Members :clap:
 
-- ####  [Ashan Subawickrama](https://github.com/Ashaxn)
-- ####  [Pramitha Wanigarathne](https://github.com/pramitha1166)
-- ####  [Charuka Herath](https://github.com/charuka4113)
-- ####  [Herschelle Gamagedara](https://github.com/hershery99)
+<strong>
+-  [Ashan Subawickrama](https://github.com/Ashaxn)
+-  [Pramitha Wanigarathne](https://github.com/pramitha1166)
+-  [Charuka Herath](https://github.com/charuka4113)
+-  [Herschelle Gamagedara](https://github.com/hershery99)
+</strong>
