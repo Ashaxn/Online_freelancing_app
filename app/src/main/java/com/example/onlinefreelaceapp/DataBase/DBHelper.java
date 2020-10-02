@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+
+import com.example.onlinefreelaceapp.Common.PostRequestModel;
 import com.example.onlinefreelaceapp.Orders;
 import androidx.annotation.Nullable;
 import com.example.onlinefreelaceapp.HelperClasses.Constants;
@@ -76,7 +78,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "title TEXT,category TEXT,description TEXT,deliver TEXT,advanceAmount TEXT," +
                 "secondPayment TEXT,contact TEXT,image TEXT,timestamp TEXT,username TEXT)");
 
-        String TABLimport android.content.Intent;E_CREATE_QUERY_ORDER = "CREATE TABLE "+TABLE_NAME_ORDER+ " "+
+        String TABLE_CREATE_QUERY_ORDER = "CREATE TABLE "+TABLE_NAME_ORDER+ " "+
                 "("
                 +COLUMN_NAME_ORDER_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +COLUMN_NAME_ORDER_WORKEMAIL+ " TEXT,"
