@@ -44,6 +44,7 @@ public class OrdersToMeAdapter extends ArrayAdapter<Orders> {
         RecOrderId.setText(Integer.toString(order.getId()));
         buyerId.setText("Order By: "+order.getBuyer());
         RecOrderEmail.setText(order.getWork_email());
+        RecOrderPrice.setText("$"+order.getTotal());
 
         return row;
     }

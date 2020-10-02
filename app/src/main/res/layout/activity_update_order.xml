@@ -162,7 +162,7 @@
                     android:text="@string/subtotal" />
 
                 <TextView
-                    android:id="@+id/txtOrderSubTotal"
+                    android:id="@+id/txtOrderSubTotalUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="40"
@@ -183,12 +183,11 @@
                     android:text="@string/servicecharge" />
 
                 <TextView
-                    android:id="@+id/txtOrderServiceCharge"
+                    android:id="@+id/txtOrderServiceChargeUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4"
                     android:layout_alignParentRight="true"
-                    />
+                    android:text="4" />
 
             </RelativeLayout>
 
@@ -205,7 +204,7 @@
                     android:textColor="@color/colorBlack"/>
 
                 <TextView
-                    android:id="@+id/txtOrderTotal"
+                    android:id="@+id/txtOrderTotalUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="44"
@@ -217,13 +216,7 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/selectpaymentmethod"
-            android:textColor="@color/colorBlack"
-            android:textSize="15sp" />
+
 
         <TableRow
             android:id="@+id/hrpaymentmethod"
@@ -232,52 +225,6 @@
             android:layout_marginTop="5dp"
             android:background="@color/colorDarkBlue"/>
 
-        <RadioGroup
-            android:id="@+id/paymentmethodgroup"
-            android:checkedButton="@id/creditcard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/creditcard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Credit or Debit Card"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_credit_card_24"
-                    android:layout_alignParentRight="true"/>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/paypal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PayPal"/>
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/paypal_vector"
-                    android:layout_alignParentRight="true"/>
-
-
-            </RelativeLayout>
-
-        </RadioGroup>
 
         <Button
             android:id="@+id/btnUpdateOrder"

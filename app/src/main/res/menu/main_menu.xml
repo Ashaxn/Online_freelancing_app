@@ -29,11 +29,6 @@
             android:id="@+id/nav_to_be_received"
             android:title="@string/to_be_received"
             android:icon="@drawable/menu_to_be_received"/>
-        <item
-            android:id="@+id/nav_revieworder"
-            android:title="Review Order"
-            android:icon="@drawable/revieworder"
-            />
     </group>
 
     <item android:title="General">

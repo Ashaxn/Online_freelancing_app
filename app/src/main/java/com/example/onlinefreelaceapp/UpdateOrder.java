@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 
 public class UpdateOrder extends AppCompatActivity {
 
     EditText email,resource,req;
+    TextView service,total,subtotal;
     Button updateBtn;
     Context context;
     private long updateDate;
@@ -29,6 +31,9 @@ public class UpdateOrder extends AppCompatActivity {
         email = (EditText) findViewById(R.id.txtWorkingEmailUpdateOrder);
         resource = (EditText) findViewById(R.id.linkUpdateOrderResource);
         req = (EditText) findViewById(R.id.txtUpdateOrderRequirement);
+        subtotal = (TextView) findViewById(R.id.txtOrderSubTotalUpdate);
+        service = (TextView) findViewById(R.id.txtOrderServiceChargeUpdate);
+        total = (TextView) findViewById(R.id.txtOrderTotalUpdate);
 
         DB = new DBHelper(context);
 
@@ -41,6 +46,9 @@ public class UpdateOrder extends AppCompatActivity {
         email.setText(order.getWork_email());
         req.setText(order.getReq());
         resource.setText(order.getResource());
+        subtotal.setText(Integer.toString(order.getSubTot()));
+        service.setText(Integer.toString(order.getServiceCharge()));
+        total.setText(Integer.toString(order.getTotal()));
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

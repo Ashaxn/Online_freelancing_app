@@ -54,7 +54,7 @@ public class ReviewOrder extends AppCompatActivity {
         byseller.setText("Gig Posted By "+getIntent().getStringExtra("seller"));
 
         subtotal.setText(getIntent().getStringExtra("amountOne"));
-        subtotal.setText(getIntent().getStringExtra("amountTwo"));
+        service_charge.setText(getIntent().getStringExtra("amountTwo"));
 
         int amount_one = Integer.parseInt(getIntent().getStringExtra("amountOne"));
         int amount_two = Integer.parseInt(getIntent().getStringExtra("amountTwo"));

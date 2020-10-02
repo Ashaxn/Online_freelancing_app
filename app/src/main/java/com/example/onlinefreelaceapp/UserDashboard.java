@@ -159,13 +159,6 @@ import java.util.ArrayList;
                 intent2.putExtra("username",intent6.getStringExtra("username"));
                 startActivity(intent2);
                 break;
-            case R.id.nav_revieworder:
-                Intent intent4 = getIntent();
-                String intentUsername = intent4.getStringExtra("username");
-                Intent intent3 = new Intent(getApplicationContext(), ReviewOrder.class);
-                intent3.putExtra("username",intentUsername);
-                startActivity(intent3);
-                break;
             case R.id.nav_my_gigs:
                 Intent intent7 = new Intent(getApplicationContext(), Display_Gigs_page.class);
                 intent7.putExtra("username",getIntent().getStringExtra("username"));
