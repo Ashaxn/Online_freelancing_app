@@ -2,6 +2,7 @@ package com.example.onlinefreelaceapp.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import com.example.onlinefreelaceapp.Create_A_Gig;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.Display_Gigs_page;
 import com.example.onlinefreelaceapp.HelperClasses.Constants;
 import com.example.onlinefreelaceapp.HelperClasses.Utils;
 import com.example.onlinefreelaceapp.R;
@@ -26,6 +29,7 @@ public class GigViewActivity extends AppCompatActivity {
     private DBHelper dbHelper;
     private int primaryKey;
     private TextView lbl_username;
+
 
 
     @Override
@@ -47,6 +51,8 @@ public class GigViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: do your function here...
+                Intent intentthis = new Intent(GigViewActivity.this, Create_A_Gig.class);
+                startActivity(intentthis);
             }
         });
 
