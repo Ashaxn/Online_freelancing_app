@@ -21,3 +21,5 @@ The main objective of this project is to provide the environment for clients and
 <li>Post A Gig Function</li>
 <li>Payments Function</li>
 </ul>
+
+## Team Members :alien:
