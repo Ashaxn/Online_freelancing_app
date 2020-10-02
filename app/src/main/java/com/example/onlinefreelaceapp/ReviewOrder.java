@@ -53,6 +53,9 @@ public class ReviewOrder extends AppCompatActivity {
 
         byseller.setText("Gig Posted By "+getIntent().getStringExtra("seller"));
 
+        subtotal.setText(getIntent().getStringExtra("amountOne"));
+        subtotal.setText(getIntent().getStringExtra("amountTwo"));
+
         //imageView.setImageURI(getIntent().getStringExtra("image"));
 
         title.setText(getIntent().getStringExtra("gigTitle"));
