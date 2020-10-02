@@ -90,7 +90,7 @@ public class ReviewOrder extends AppCompatActivity {
                 Intent intent1 = getIntent();
                 String buyer = intent1.getStringExtra("username");
                 String seller = getIntent().getStringExtra("seller");
-                int gigId = 12;
+                int gigId = Integer.parseInt(getIntent().getStringExtra("gigid"));
                 String workingEmail = email.getText().toString();
                 String orderReq = requirement.getText().toString();
                 String resourceLink = driveLink.getText().toString();
