@@ -24,9 +24,5 @@ The main objective of this project is to provide the environment for clients and
 
 ## Team Members :clap:
 
-<ul>
-<li>[Ashan Subawickrama](https://www.quora.com)</li>
-<li>@pramitha1166</li>
-<li>@charuka4113</li>
-<li>@hershery99</li>
-</ul>
+
+[Ashan Subawickrama](https://www.quora.com)
