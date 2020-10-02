@@ -10,10 +10,13 @@ import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.HelperClasses.Constants;
+import com.example.onlinefreelaceapp.adapter.GigHolder;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,6 +27,7 @@ public class ReviewOrder extends AppCompatActivity {
     TextView total_price,subtotal,service_charge,title,description,byseller;
     Button addOrder;
     DBHelper DB;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +43,31 @@ public class ReviewOrder extends AppCompatActivity {
         title = (TextView) findViewById(R.id.gigtitleorderreview);
         description = (TextView) findViewById(R.id.gigdescriptionorder);
         byseller = (TextView) findViewById(R.id.orderBySeller);
+        imageView = (ImageView) findViewById(R.id.gigimageorder);
+
+        DB = new DBHelper(this);
+
+        final GigHolder gigHolder = DB.getGigsFromPrimaryKey(Integer.parseInt(getIntent().getStringExtra("gigid")));
+
+        imageView.setImageURI(gigHolder.getImage());
 
         byseller.setText("Gig Posted By "+getIntent().getStringExtra("seller"));
 
+        //imageView.setImageURI(getIntent().getStringExtra("image"));
+
         title.setText(getIntent().getStringExtra("gigTitle"));
         description.setText(getIntent().getStringExtra("desciption"));
+
 
         addOrder = (Button) findViewById(R.id.btnAddOrder);
 
         Intent intentUsername = getIntent();
         String user = intentUsername.getStringExtra("username");
 
-        DB = new DBHelper(this);
+
+
+        String txtEmail = DB.getUserEmailAddress(getIntent().getStringExtra("username"));
+        email.setText(txtEmail);
 
 //        String txtEmail = DB.getUserEmail(user);
 

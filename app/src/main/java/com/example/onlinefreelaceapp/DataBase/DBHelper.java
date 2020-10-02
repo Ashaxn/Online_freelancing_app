@@ -640,6 +640,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String getUserEmailAddress(String username) {
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+
+        Cursor cursor = MyDB.rawQuery("select * from users where username=?", new String[]{username});
+
+        if (cursor.moveToNext()) {
+            return cursor.getString(2);
+        } else {
+            return null;
+        }
+    }
 
 
 
