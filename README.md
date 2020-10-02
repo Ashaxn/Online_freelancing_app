@@ -25,7 +25,7 @@ The main objective of this project is to provide the environment for clients and
 ## Team Members :clap:
 
 <ul>
-<li>[Ashan](https://github.com/Ashaxn)</li>
+<li>@Ashaxn</li>
 <li>@pramitha1166</li>
 <li>@charuka4113</li>
 <li>@hershery99</li>
