@@ -56,6 +56,14 @@ public class ReviewOrder extends AppCompatActivity {
         subtotal.setText(getIntent().getStringExtra("amountOne"));
         subtotal.setText(getIntent().getStringExtra("amountTwo"));
 
+        int amount_one = Integer.parseInt(getIntent().getStringExtra("amountOne"));
+        int amount_two = Integer.parseInt(getIntent().getStringExtra("amountTwo"));
+        int total_amount = amount_one + amount_two;
+
+        String totalAmount = Integer.toString(total_amount);
+
+        total_price.setText(totalAmount);
+
         //imageView.setImageURI(getIntent().getStringExtra("image"));
 
         title.setText(getIntent().getStringExtra("gigTitle"));

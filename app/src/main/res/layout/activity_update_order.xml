@@ -55,38 +55,6 @@
             android:background="@color/colorDarkBlue"/>
 
 
-
-        <TextView
-            android:id="@+id/gigtitleorderreview"
-            android:layout_marginTop="10dp"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Do Content Writing For You"
-            android:textColor="@color/colorDarkBlue"/>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/gigimageorder"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gigimage"
-            android:layout_alignParentRight="true"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/gigdescriptionorder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I will deliver the article of your desired topic on time.
-I have an excellent command of writing English Articles on any topic (Specially E-Commerce, Technology, Motivational / Inspiration, General Topics and many more)."/>
-
-
-
-
-
-
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
