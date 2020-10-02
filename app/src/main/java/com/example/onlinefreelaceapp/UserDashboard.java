@@ -106,6 +106,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             break;
             case R.id.nav_post_request:
                 Intent intent = new Intent(getApplicationContext(),PostARequestHome.class);
+                intent.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent);
                 break;
             case R.id.nav_my_orders:
@@ -177,10 +178,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredRecyclerThree.setAdapter(adapter);
 
     }
-
-
-
-
 
 
 }

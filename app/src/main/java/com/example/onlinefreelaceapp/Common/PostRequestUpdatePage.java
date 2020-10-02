@@ -63,9 +63,16 @@ public class PostRequestUpdatePage extends AppCompatActivity {
                 String postDescriptionText = postDescription.getText().toString();
                 String postBudgetText = postBudget.getText().toString();
 
-                PostRequestModel postRequestModel = new PostRequestModel(Integer.parseInt(id),postTitleText,postMobileText,postCategoryText,postyearText,postmonthText,postdayText,postDescriptionText,postBudgetText);
+                PostRequestModel postRequestModel = new PostRequestModel(Integer.parseInt(id),postTitleText,postMobileText,postCategoryText,postyearText,postmonthText,postdayText,postDescriptionText,postBudgetText,getIntent().getStringExtra("username"));
                 dbHelper.updateSinglePost(postRequestModel);
-                startActivity(new Intent(context,PostARequestHome.class));
+
+                String username = getIntent().getStringExtra("username");
+
+                Intent intent = new Intent(getApplicationContext(),PostARequestHome.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
+
+               // startActivity(new Intent(context,PostARequestHome.class));
             }
         });
 

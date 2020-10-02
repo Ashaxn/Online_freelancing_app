@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,10 +48,15 @@ public class PostRequestPageTwo extends AppCompatActivity {
                 int postmonth = intent.getIntExtra("postmonth",0);
                 int postday = intent.getIntExtra("postday",0);
 
-                PostRequestModel postRequestModel = new PostRequestModel(postyear,postmonth,postday,posttitle,postmobile,postcategory,postdescription,postbud);
+                String username = getIntent().getStringExtra("username");
+
+                PostRequestModel postRequestModel = new PostRequestModel(postyear,postmonth,postday,posttitle,postmobile,postcategory,postdescription,postbud,username);
                 dbHelper.insertPostRequest(postRequestModel);
 
-                startActivity(new Intent(context,PostARequestHome.class));
+                Toast.makeText(context,"Successfully Added",Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getApplicationContext(),PostARequestHome.class);
+                intent1.putExtra("username",username);
+                startActivity(intent1);
             }
         });
     }

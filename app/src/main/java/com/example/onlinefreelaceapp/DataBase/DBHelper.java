@@ -28,6 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String POST_DAY = "postday";
     private static final String POST_DESC = "postdesc";
     private static final String POST_BUDGET = "postbudget";
+    private static final String POST_USERNAME = "username";
 
 
 
@@ -54,7 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 +POST_MONTH+" INTEGER,"
                 +POST_DAY+" INTEGER,"
                 +POST_DESC + " TEXT,"
-                +POST_BUDGET + " TEXT" +
+                +POST_BUDGET + " TEXT,"
+                +POST_USERNAME + " TEXT"+
                 ");";
 
         //Post Request Table Run
@@ -134,6 +136,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(POST_DAY,postRequestModel.getPostday());
         contentValues.put(POST_DESC,postRequestModel.getPostdesc());
         contentValues.put(POST_BUDGET,postRequestModel.getPostbudget());
+        contentValues.put(POST_USERNAME,postRequestModel.getUsername());
 
         // Save Data To Table
         sqLiteDatabase.insert(POST_TABLE_NAME,null,contentValues);
@@ -151,11 +154,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Get All Posts Into a List
-    public List<PostRequestModel> getAllPosts(){
+    public List<PostRequestModel> getAllPosts(String username){
 
         List<PostRequestModel> requestPosts = new ArrayList();
         SQLiteDatabase MyDB = getReadableDatabase();
-        String query = "SELECT * FROM "+POST_TABLE_NAME;
+        String query = "SELECT * FROM "+POST_TABLE_NAME+" WHERE TRIM("+POST_USERNAME+") = '"+username.trim()+"'";
 
         Cursor cursor = MyDB.rawQuery(query,null);
 
@@ -190,7 +193,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public PostRequestModel getSinglePost(int id){
         SQLiteDatabase MyDB = getWritableDatabase();
 
-        Cursor cursor = MyDB.query(POST_TABLE_NAME,new String[]{POST_ID,POST_TITLE,POST_MOBILE,POST_CATEGORY,POST_YEAR,POST_MONTH,POST_DAY,POST_DESC,POST_BUDGET},POST_ID + "= ?",new String[]{String.valueOf(id)},null, null,null);
+        Cursor cursor = MyDB.query(POST_TABLE_NAME,new String[]{POST_ID,POST_TITLE,POST_MOBILE,POST_CATEGORY,POST_YEAR,POST_MONTH,POST_DAY,POST_DESC,POST_BUDGET,POST_USERNAME},POST_ID + "= ?",new String[]{String.valueOf(id)},null, null,null);
 
         PostRequestModel postRequestModel;
         if(cursor != null){
@@ -204,7 +207,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     cursor.getInt(5),               //Post_Month
                     cursor.getInt(6),               //Post_Day
                     cursor.getString(7),            //Post_Desc
-                    cursor.getString(8)            //Post_Budget
+                    cursor.getString(8),            //Post_Budget
+                    cursor.getString(9)             //Post_Username
             );
             return postRequestModel;
         }

@@ -8,21 +8,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
 import com.example.onlinefreelaceapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PostARequestHome extends AppCompatActivity {
 
-    private Button postadd;
+    private FloatingActionButton postadd;
     private ListView listView;
     private TextView postcount;
     private DBHelper dbHelper;
@@ -39,21 +40,23 @@ public class PostARequestHome extends AppCompatActivity {
         dbHelper = new DBHelper(context);
         postadd = findViewById(R.id.postadd);
         listView = findViewById(R.id.postlist);
-        postcount = findViewById(R.id.postcount);
+
         requestPosts = new ArrayList<>();
 
-        requestPosts = dbHelper.getAllPosts();
+        requestPosts = dbHelper.getAllPosts(getIntent().getStringExtra("username"));
         PostRequestAdapter adapter = new PostRequestAdapter(context,R.layout.postrequest_card,requestPosts);
         listView.setAdapter(adapter);
 
         //Get Post Count From the Table
-        int countPost = dbHelper.postCount();
-        postcount.setText(""+countPost+" Requests");
+        //int countPost = dbHelper.postCount();
+        //postcount.setText(""+countPost+" Requests");
 
         postadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(context, PostRequest.class));
+                Intent intent = new Intent(getApplicationContext(),PostRequest.class);
+                intent.putExtra("username",getIntent().getStringExtra("username"));
+                startActivity(intent);
             }
         });
 
@@ -70,14 +73,18 @@ public class PostARequestHome extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(context,RequestPostUserView.class);
                         intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
+                        intent.putExtra("username",getIntent().getStringExtra("username"));
                         startActivity(intent);
                     }
                 });
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(context,"Successfully Deleted!",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context,PostARequestHome.class);
                         dbHelper.deletePostRequest(postrequestmodel.getId());
-                        startActivity(new Intent(context,PostARequestHome.class));
+                        intent.putExtra("username",getIntent().getStringExtra("username"));
+                        startActivity(intent);
                     }
                 });
                 builder.setNeutralButton("Edit", new DialogInterface.OnClickListener() {
@@ -85,6 +92,7 @@ public class PostARequestHome extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(context,PostRequestUpdatePage.class);
                         intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
+                        intent.putExtra("username",getIntent().getStringExtra("username"));
                         startActivity(intent);
                     }
                 });
