@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.onlinefreelaceapp.Become_A_Seller;
 import com.example.onlinefreelaceapp.Common.RequestPostUserView;
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
@@ -44,6 +46,7 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String username = usernameLogin.getText().toString();
                 String pass = passwordLogin.getText().toString();
 
@@ -54,7 +57,9 @@ public class Login extends AppCompatActivity {
                     if(check==true) {
                         new PrefManager(Login.this).setPreference(Constants.CURRENT_USER,DB.getFullName(username));
                         Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),UserDashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
+                        intent.putExtra("username",username);
+                        intent.putExtra("password",pass);
                         startActivity(intent);
                     }else {
                         Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
@@ -63,6 +68,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void postRequestUserView(View view){

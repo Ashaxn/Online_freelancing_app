@@ -5,11 +5,8 @@ import android.net.Uri;
 public class GigHolder {
 
     private int primaryKey;
-
-    private String title, category, description, deliveryInfo, advanceAmount, secondAmount, contact, time,username;
+    private String title, category, description, deliveryInfo, advanceAmount, secondAmount, contact, time, username, seller;
     private Uri image;
-
-
 
     public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image,  String time,String username) {
 
@@ -24,6 +21,22 @@ public class GigHolder {
         this.image = image;
         this.time = time;
         this.username = username;
+    }
+
+    public GigHolder(int primaryKey, String title, String category, String description, String deliveryInfo, String advanceAmount, String secondAmount, String contact, Uri image,  String time, String username,String seller) {
+
+        this.primaryKey = primaryKey;
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.deliveryInfo = deliveryInfo;
+        this.advanceAmount = advanceAmount;
+        this.secondAmount = secondAmount;
+        this.contact = contact;
+        this.image = image;
+        this.time = time;
+        this.username = username;
+        this.seller = seller;
 
     }
 
@@ -110,8 +123,6 @@ public class GigHolder {
     public double getTotal() {
         return Double.parseDouble(advanceAmount) + Double.parseDouble(secondAmount);
     }
-
-
     public String getUsername() {
         return username;
     }
@@ -119,5 +130,4 @@ public class GigHolder {
     public void setUsername(String username) {
         this.username = username;
     }
-
 }

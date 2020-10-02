@@ -46,6 +46,7 @@ public class SignUpPageTwo extends AppCompatActivity {
                 String password1 = password.getText().toString();
                 String repassword1 = repassword.getText().toString();
                 Intent intent = getIntent();
+
                 String username = intent.getStringExtra("username");
                 String fullname = intent.getStringExtra("fullname");
                 String email = intent.getStringExtra("email");
@@ -55,15 +56,19 @@ public class SignUpPageTwo extends AppCompatActivity {
                 if(username.equals("")||email.equals("")||fullname.equals("")||province.equals("")||mobilenumber.equals("")||password1.equals("")||repassword1.equals("")) {
                     Toast.makeText(SignUpPageTwo.this,"Required All Fields!",Toast.LENGTH_SHORT).show();
                 }else {
-                    Boolean checkuser = DB.cheackUser(username);
+                    Boolean checkuser = DB.checkUser(username);
                     if(checkuser==false) {
                         if(password1.equals(repassword1)) {
-                            Boolean insert = DB.insertUser(username, fullname, email, province, mobilenumber, year, month, day, password1);
-                            if(insert==false) {
+
+                            UsersModel usersModel= new UsersModel(year,month,day,username,fullname,email,mobilenumber,province,password1);
+                            boolean insert= DB.insertUsers(usersModel);
+
+
+                                if(insert==false) {
                                 Toast.makeText(SignUpPageTwo.this,"Sign Up Not Success!",Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(SignUpPageTwo.this,"Sign Up Successful!",Toast.LENGTH_SHORT).show();
-                                Intent intent1 = new Intent(getApplicationContext(),AccountCreateSuccessfully.class);
+                                Intent intent1 = new Intent(getApplicationContext(), AccountCreateSuccessfully.class);
                                 startActivity(intent1);
                             }
                         }else {

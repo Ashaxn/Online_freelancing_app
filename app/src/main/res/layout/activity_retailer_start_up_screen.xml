@@ -71,11 +71,13 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/startup_contus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:background="#00000000"
+            android:onClick="callcontus"
             android:text="@string/contact_us"
             android:textColor="@color/colorAccent"/>
 
