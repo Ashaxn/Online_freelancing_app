@@ -30,5 +30,3 @@ The main objective of this project is to provide the environment for clients and
 <li>@charuka4113</li>
 <li>@hershery99</li>
 </ul>
-
-@pramitha1166
