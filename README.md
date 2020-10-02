@@ -19,7 +19,7 @@ The main objective of this project is to provide the environment for clients and
 <li>User Account Function</li>
 <li>Buyer Request Function</li>
 <li>Post A Gig Function</li>
-<li>Payments Function</li>
+<li>Post A Order and Deliver Order Function</li>
 </ul>
 
 ## Team Members :clap:
