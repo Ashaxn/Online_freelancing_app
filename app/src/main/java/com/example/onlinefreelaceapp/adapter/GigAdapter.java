@@ -2,6 +2,7 @@ package com.example.onlinefreelaceapp.adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.example.onlinefreelaceapp.HelperClasses.Utils;
 import com.example.onlinefreelaceapp.R;
 import com.example.onlinefreelaceapp.ui.main.GigViewActivity;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,16 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
     private boolean isAdminView;
     private DBHelper dbHelper;
     private UiRefresh uiRefresh;
+    private String seller;
+
+    public GigAdapter(Activity activity, boolean isAdminView, DBHelper dbHelper,UiRefresh uiRefresh, String seller) {
+        this.activity = activity;
+        gigList = new ArrayList<>();
+        this.isAdminView = isAdminView;
+        this.dbHelper = dbHelper;
+        this.uiRefresh = uiRefresh;
+        this.seller = seller;
+    }
 
     public GigAdapter(Activity activity, boolean isAdminView, DBHelper dbHelper,UiRefresh uiRefresh) {
         this.activity = activity;
@@ -67,6 +79,8 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
         final GigHolder gigHolder = gigList.get(position);
+
+
         holder.lbl_title.setText(gigHolder.getTitle());
         holder.lbl_price.setText(Utils.getDecimal(gigHolder.getTotal()));
         holder.lbl_contact.setText(gigHolder.getContact());
@@ -78,12 +92,14 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
                if(!isAdminView){
                    Intent intent = new Intent(activity, GigViewActivity.class);
                    intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
+                   intent.putExtra("username",seller);
                    activity.startActivity(intent);
                }
 
                 if(!isAdminView){
                     Intent intent = new Intent(activity, GigViewActivity.class);
                     intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
+                    intent.putExtra("username",seller);
                     activity.startActivity(intent);
                 }
 

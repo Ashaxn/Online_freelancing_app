@@ -70,7 +70,9 @@ public class Display_Gigs_page extends AppCompatActivity implements UiRefresh {
         findViewById(R.id.btn_switch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Display_Gigs_page.this, ViewAsCustomerActivity.class));
+                Intent intentSW = new Intent(Display_Gigs_page.this, ViewAsCustomerActivity.class);
+                intentSW.putExtra("username",getIntent().getStringExtra("username"));
+                startActivity(intentSW);
                 finish();
             }
         });

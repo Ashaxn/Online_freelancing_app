@@ -21,7 +21,6 @@ import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedAdapter;
 import com.example.onlinefreelaceapp.HelperClasses.HomeAdapter.MostViewedHelperClass;
-import
 import com.example.onlinefreelaceapp.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -137,6 +136,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_my_gigs:
                 Intent intent7 = new Intent(getApplicationContext(), Display_Gigs_page.class);
+                intent7.putExtra("username",getIntent().getStringExtra("username"));
                 startActivity(intent7);
                 break;
 

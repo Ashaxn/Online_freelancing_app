@@ -80,6 +80,13 @@
             android:text="I will deliver the article of your desired topic on time.
 I have an excellent command of writing English Articles on any topic (Specially E-Commerce, Technology, Motivational / Inspiration, General Topics and many more)."/>
 
+        <TextView
+            android:id="@+id/orderBySeller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By: Seller"
+            android:layout_marginTop="10dp"/>
+
 
 
 

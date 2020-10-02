@@ -21,7 +21,7 @@ import java.net.URL;
 public class ReviewOrder extends AppCompatActivity {
 
     EditText email,requirement,driveLink;
-    TextView total_price,subtotal,service_charge;
+    TextView total_price,subtotal,service_charge,title,description,byseller;
     Button addOrder;
     DBHelper DB;
 
@@ -36,6 +36,14 @@ public class ReviewOrder extends AppCompatActivity {
         total_price = (TextView) findViewById(R.id.txtOrderTotal);
         subtotal = (TextView) findViewById(R.id.txtOrderSubTotal);
         service_charge = (TextView) findViewById(R.id.txtOrderServiceCharge);
+        title = (TextView) findViewById(R.id.gigtitleorderreview);
+        description = (TextView) findViewById(R.id.gigdescriptionorder);
+        byseller = (TextView) findViewById(R.id.orderBySeller);
+
+        byseller.setText("Gig Posted By "+getIntent().getStringExtra("seller"));
+
+        title.setText(getIntent().getStringExtra("gigTitle"));
+        description.setText(getIntent().getStringExtra("desciption"));
 
         addOrder = (Button) findViewById(R.id.btnAddOrder);
 
@@ -53,7 +61,7 @@ public class ReviewOrder extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = getIntent();
                 String buyer = intent1.getStringExtra("username");
-                String seller = "charuka11";
+                String seller = getIntent().getStringExtra("seller");
                 int gigId = 12;
                 String workingEmail = email.getText().toString();
                 String orderReq = requirement.getText().toString();

@@ -44,7 +44,7 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
         emptyContainer = findViewById(R.id.ll_empty);
 
         //init
-        adapter = new GigAdapter(this, false,dbHelper,this);
+        adapter = new GigAdapter(this, false,dbHelper,this,getIntent().getStringExtra("username"));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -55,7 +55,9 @@ public class ViewAsCustomerActivity extends AppCompatActivity implements UiRefre
         findViewById(R.id.btn_switch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewAsCustomerActivity.this, Display_Gigs_page.class));
+                Intent intentSW = new Intent(ViewAsCustomerActivity.this, Display_Gigs_page.class);
+                intentSW.putExtra("username",getIntent().getStringExtra("username"));
+                startActivity(intentSW);
                 finish();
             }
         });
