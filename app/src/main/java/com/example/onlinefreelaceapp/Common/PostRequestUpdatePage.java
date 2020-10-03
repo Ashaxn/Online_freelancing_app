@@ -70,6 +70,7 @@ public class PostRequestUpdatePage extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(),PostARequestHome.class);
                 intent.putExtra("username",username);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
                // startActivity(new Intent(context,PostARequestHome.class));
@@ -77,5 +78,10 @@ public class PostRequestUpdatePage extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

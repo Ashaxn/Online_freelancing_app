@@ -78,6 +78,7 @@ public class OrdersToBeReceivedProcessing extends AppCompatActivity {
                         Intent intent = new Intent(context,UpdateOrder.class);
                         intent.putExtra("username",username);
                         intent.putExtra("id",String.valueOf(order.getId()));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 
                     }
@@ -87,8 +88,9 @@ public class OrdersToBeReceivedProcessing extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DB.deleteOrdersToBeRec(order.getId());
-                        Intent intent = new Intent(context,OrdersToBeRecHome.class);
+                        Intent intent = new Intent(context,OrdersToBeReceivedProcessing.class);
                         intent.putExtra("username",username);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 });

@@ -67,6 +67,7 @@ public class GigViewActivity extends AppCompatActivity {
                     intentThis.putExtra("amountTwo",gigHolder.getSecondAmount());
                     intentThis.putExtra("username",getIntent().getStringExtra("username"));
                     intentThis.putExtra("image",gigHolder.getImage());
+                    intentThis.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentThis);
 
                 }

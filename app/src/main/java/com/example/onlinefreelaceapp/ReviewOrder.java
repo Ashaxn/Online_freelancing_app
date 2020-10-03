@@ -122,6 +122,7 @@ public class ReviewOrder extends AppCompatActivity {
                             intentPaymentPage.putExtra("sellerUsername", order.getSeller());
                             intentPaymentPage.putExtra("paymentTotal", order.getTotal());
                             intentPaymentPage.putExtra("PaymentSub", order.getSubTot());
+                            intentPaymentPage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intentPaymentPage);
                         } else {
                             Toast.makeText(ReviewOrder.this, "Order Failed!", Toast.LENGTH_SHORT).show();
