@@ -48,6 +48,7 @@ public class SignUp extends AppCompatActivity {
                 intent.putExtra("email",email1);
                 intent.putExtra("province",province1);
                 intent.putExtra("mobilenumber",mob);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

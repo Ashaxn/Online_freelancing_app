@@ -60,6 +60,7 @@ public class Login extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
                         intent.putExtra("username",username);
                         intent.putExtra("password",pass);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else {
                         Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
