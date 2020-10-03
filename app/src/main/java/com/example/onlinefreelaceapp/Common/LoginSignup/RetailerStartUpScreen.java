@@ -21,14 +21,14 @@ public class RetailerStartUpScreen extends AppCompatActivity {
     }
 
     public void callLoginScreen(View view){
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(),Login.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     public void callSignUpScreen(View view){
-        startActivity(new Intent(getApplicationContext(),SignUp.class));
+        startActivity(new Intent(getApplicationContext(),SignUp.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     public void callcontus(View view){
-        startActivity(new Intent(getApplicationContext(), changePassword.class));
+        startActivity(new Intent(getApplicationContext(), changePassword.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }
