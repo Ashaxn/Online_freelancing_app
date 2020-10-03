@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrdersToMeHome"
-    android:padding="10dp"
-    android:background="@drawable/orderstomebacka">
+    android:padding="30dp"
+    android:background="@drawable/vectorordersback">
 
 
     <LinearLayout
