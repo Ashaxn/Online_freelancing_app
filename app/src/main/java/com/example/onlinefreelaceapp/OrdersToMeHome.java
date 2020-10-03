@@ -42,6 +42,7 @@ public class OrdersToMeHome extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),UserDashboard.class);
                 intent.putExtra("username",getIntent().getStringExtra("username"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -51,6 +52,7 @@ public class OrdersToMeHome extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),OrdersToMeProcessing.class);
                 intent.putExtra("username",getIntent().getStringExtra("username"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

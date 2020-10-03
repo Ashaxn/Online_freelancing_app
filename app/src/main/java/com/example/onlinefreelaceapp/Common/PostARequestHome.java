@@ -74,6 +74,7 @@ public class PostARequestHome extends AppCompatActivity {
                         Intent intent = new Intent(context,RequestPostUserView.class);
                         intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
                         intent.putExtra("username",getIntent().getStringExtra("username"));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 });
@@ -84,6 +85,7 @@ public class PostARequestHome extends AppCompatActivity {
                         Intent intent = new Intent(context,PostARequestHome.class);
                         dbHelper.deletePostRequest(postrequestmodel.getId());
                         intent.putExtra("username",getIntent().getStringExtra("username"));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 });
@@ -93,6 +95,7 @@ public class PostARequestHome extends AppCompatActivity {
                         Intent intent = new Intent(context,PostRequestUpdatePage.class);
                         intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
                         intent.putExtra("username",getIntent().getStringExtra("username"));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 });
@@ -102,4 +105,8 @@ public class PostARequestHome extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

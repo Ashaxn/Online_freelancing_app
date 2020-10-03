@@ -10,6 +10,7 @@ import android.net.Uri;
 
 import com.example.onlinefreelaceapp.Common.LoginSignup.UsersModel;
 import com.example.onlinefreelaceapp.Common.PostRequestModel;
+import com.example.onlinefreelaceapp.Deliver;
 import com.example.onlinefreelaceapp.Orders;
 import androidx.annotation.Nullable;
 import com.example.onlinefreelaceapp.HelperClasses.Constants;
@@ -61,6 +62,16 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME_ORDER_SUBMITDATE = "publish";
     public static final String COLUMN_NAME_ORDER_FINISHDATE = "finish";
 
+    //deliver
+    public static final String TABLE_NAME_DELIVER = "deliver";
+    public static final String COLUMN_NAME_DELIVER_ID = "id";
+    public static final String COLUMN_NAME_DELIVER_RESOURCE = "resource";
+    public static final String COLUMN_NAME_DELIVER_MASSAGE = "massage";
+    public static final String COLUMN_NAME_DELIVER_BUYER = "buyer";
+    public static final String COLUMN_NAME_DELIVER_SELLER = "seller";
+    public static final String COLUMN_NAME_DELIVER_GIG = "gig";
+
+
 
 
     // Users Column Names
@@ -109,8 +120,19 @@ public class DBHelper extends SQLiteOpenHelper {
                 +COLUMN_NAME_ORDER_FINISHDATE+ " TEXT"+
                 ");";
 
+        String TABLE_CREATE_QUERY_DELIVER = "CREATE TABLE "+TABLE_NAME_DELIVER+" "+
+                "("
+                +COLUMN_NAME_DELIVER_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +COLUMN_NAME_DELIVER_RESOURCE+ " TEXT,"
+                +COLUMN_NAME_DELIVER_MASSAGE+ " TEXT,"
+                +COLUMN_NAME_DELIVER_BUYER+ " TEXT,"
+                +COLUMN_NAME_DELIVER_SELLER+ " TEXT,"
+                +COLUMN_NAME_ORDER_GIG+ " INTEGER"+
+                ");";
+
         //run query
         MyDB.execSQL(TABLE_CREATE_QUERY_ORDER);
+        MyDB.execSQL(TABLE_CREATE_QUERY_DELIVER);
 
 
 
@@ -164,20 +186,22 @@ public class DBHelper extends SQLiteOpenHelper {
         //drop table query orders
         String DROP_TABLE_ORDERS = "DROP TABLE IF EXISTS " +TABLE_NAME_ORDER;
 
+        //drop table query deliver
+        String DROP_TABLE_DELIVER = "DROP TABLE IF EXISTS " +TABLE_NAME_DELIVER;
+
         //POST Request If Exists QUERY
         String DROP_POST_REQUEST_TABLE_QUERY = "DROP TABLE IF EXISTS "+ POST_TABLE_NAME;
         MyDB.execSQL(DROP_POST_REQUEST_TABLE_QUERY);
-        //onCreate(MyDB);
 
         //Users If Exists QUERY
         String DROP_SIGN_UP_TABLE_QUERY = "DROP TABLE IF EXISTS "+ USERS_TABLE_NAME;
         MyDB.execSQL(DROP_SIGN_UP_TABLE_QUERY);
-        onCreate(MyDB);
 
         //exe query
         MyDB.execSQL(DROP_TABLE_ORDERS);
+        MyDB.execSQL(DROP_TABLE_DELIVER);
 
-       // onCreate(MyDB);
+        onCreate(MyDB);
 
 
     }
@@ -323,7 +347,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    //Order Section
+    //Order Section///////////////////////////////////////////////////
     //Insert Order
     /*
     public Boolean insertOrder(String email,String req,String resource,int subtotal,int total,int service,String buyer,String seller,int gigid) {
@@ -351,6 +375,30 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }*/
 
+    //insert delivered order
+    public Boolean insertDeliver(Deliver deliver) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_NAME_DELIVER_RESOURCE,deliver.getResource());
+        contentValues.put(COLUMN_NAME_DELIVER_MASSAGE,deliver.getMassage());
+        contentValues.put(COLUMN_NAME_DELIVER_BUYER,deliver.getBuyer());
+        contentValues.put(COLUMN_NAME_DELIVER_SELLER,deliver.getSeller());
+        contentValues.put(COLUMN_NAME_DELIVER_GIG,deliver.getGigId());
+
+        long result = MyDB.insert(TABLE_NAME_DELIVER,null,contentValues);
+        MyDB.close();
+
+        if(result==-1) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+
+
+    //insert order
     public Boolean insertOrder(Orders order) {
 
         SQLiteDatabase MyDB = this.getWritableDatabase();

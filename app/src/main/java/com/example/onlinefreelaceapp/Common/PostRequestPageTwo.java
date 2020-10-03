@@ -56,8 +56,13 @@ public class PostRequestPageTwo extends AppCompatActivity {
                 Toast.makeText(context,"Successfully Added",Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent(getApplicationContext(),PostARequestHome.class);
                 intent1.putExtra("username",username);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

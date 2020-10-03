@@ -66,6 +66,7 @@ public class UpdateOrder extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(),OrdersToBeReceivedProcessing.class);
                 intent.putExtra("username",getIntent().getStringExtra("username"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
             }

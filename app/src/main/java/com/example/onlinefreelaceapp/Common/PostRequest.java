@@ -78,6 +78,7 @@ public class PostRequest extends AppCompatActivity {
                 intent.putExtra("postmonth",postmonth);
                 intent.putExtra("postday",postday);
                 intent.putExtra("username",getIntent().getStringExtra("username"));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -87,6 +88,11 @@ public class PostRequest extends AppCompatActivity {
     public void postRequestPageTwo(View view){
 
         startActivity(new Intent(getApplicationContext(), PostRequestPageTwo.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 
