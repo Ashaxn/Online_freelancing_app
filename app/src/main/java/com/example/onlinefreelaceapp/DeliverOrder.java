@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ public class DeliverOrder extends AppCompatActivity {
 
     TextView deliverOrderId,txtDeliverOrderDetails;
     Button btnOrderResource;
+    EditText massage,resource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,8 @@ public class DeliverOrder extends AppCompatActivity {
         deliverOrderId = (TextView) findViewById(R.id.deliverOrderId);
         txtDeliverOrderDetails = (TextView) findViewById(R.id.txtDeliverOrderDetails);
         btnOrderResource = (Button) findViewById(R.id.btnOrderResource);
+        massage = (EditText) findViewById(R.id.txtDeliverMsg);
+        resource = (EditText) findViewById(R.id.linkDeliverResource);
 
         final String resLink = getIntent().getStringExtra("resource");
 

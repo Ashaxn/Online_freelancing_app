@@ -1,6 +1,8 @@
 package com.example.onlinefreelaceapp;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,7 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,12 +51,16 @@ import java.util.ArrayList;
         RecyclerView.Adapter adapter;
         ImageView menuIcon,setting;
         UsersModel usersModel;
+        Context context;
 
 
         //Drawer Menu
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         private DBHelper dbHelper;
+
+        public static final int TIME_DELAY = 2000;
+        public static long back_pressed;
 
 
         @SuppressLint("WrongViewCast")
@@ -63,6 +71,7 @@ import java.util.ArrayList;
             setContentView(R.layout.activity_user_dashboard);
 
 
+            context = this;
 
 
             dbHelper = new DBHelper(this);
@@ -105,6 +114,7 @@ import java.util.ArrayList;
 
 
 
+
         //Navigation Drawer
 
         private void navigationDrawer() {
@@ -127,13 +137,47 @@ import java.util.ArrayList;
 
         }
 
+
         @Override
         public void onBackPressed() {
+/*
+            if(back_pressed + TIME_DELAY > System.currentTimeMillis()) {
+                /*Intent intent12 = new Intent(Intent.ACTION_MAIN);
+                intent12.addCategory(Intent.CATEGORY_HOME);
+                intent12.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent12);
+                finish();
+                finish();
+            }else {
+                Toast.makeText(this,"Please Press Back Twise to Exit!",Toast.LENGTH_SHORT).show();
+            }
+
+            back_pressed = System.currentTimeMillis();*/
 
             if(drawerLayout.isDrawerVisible(GravityCompat.START)){
                 drawerLayout.closeDrawer(GravityCompat.START);
-            } else
-            super.onBackPressed();
+            } else {
+
+                //Toast.makeText(this,"Bye!",Toast.LENGTH_SHORT).show();
+                //super.onBackPressed();
+                //startActivity(new Intent(getApplicationContext(),RetailerStartUpScreen.class));
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Are you sure to close the application?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishAffinity();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+
+            }
         }
 
         @Override
@@ -158,13 +202,6 @@ import java.util.ArrayList;
                 Intent intent6 = getIntent();
                 intent2.putExtra("username",intent6.getStringExtra("username"));
                 startActivity(intent2);
-                break;
-            case R.id.nav_revieworder:
-                Intent intent4 = getIntent();
-                String intentUsername = intent4.getStringExtra("username");
-                Intent intent3 = new Intent(getApplicationContext(), ReviewOrder.class);
-                intent3.putExtra("username",intentUsername);
-                startActivity(intent3);
                 break;
             case R.id.nav_my_gigs:
                 Intent intent7 = new Intent(getApplicationContext(), Display_Gigs_page.class);
@@ -233,6 +270,8 @@ import java.util.ArrayList;
         featuredRecyclerThree.setAdapter(adapter);
 
     }
+
+
 
 
 

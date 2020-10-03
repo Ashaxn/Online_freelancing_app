@@ -45,6 +45,7 @@ public class BuyerRequestHome extends AppCompatActivity {
 
                 Intent intent = new Intent(view.getContext(), BuyerRequestUser.class);
                 intent.putExtra("id",String.valueOf(postrequestmodel.getId()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
 

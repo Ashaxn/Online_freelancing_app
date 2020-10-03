@@ -67,8 +67,8 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/gigimageorder"
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
             android:src="@drawable/gigimage"
             android:layout_alignParentRight="true"/>
 
@@ -262,22 +262,7 @@ I have an excellent command of writing English Articles on any topic (Specially 
             android:layout_marginTop="5dp"
             android:background="@color/colorDarkBlue"/>
 
-        <RadioGroup
-            android:id="@+id/paymentmethodgroup"
-            android:checkedButton="@id/creditcard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </RadioGroup>
 
         <Button
             android:id="@+id/btnAddOrder"

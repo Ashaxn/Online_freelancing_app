@@ -69,6 +69,7 @@ public class SignUpPageTwo extends AppCompatActivity {
                             }else {
                                 Toast.makeText(SignUpPageTwo.this,"Sign Up Successful!",Toast.LENGTH_SHORT).show();
                                 Intent intent1 = new Intent(getApplicationContext(), AccountCreateSuccessfully.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent1);
                             }
                         }else {

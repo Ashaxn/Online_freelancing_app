@@ -73,12 +73,14 @@ public class GigViewActivity extends AppCompatActivity {
                     //TODO: do your function here...
                     Intent intentThis = new Intent(GigViewActivity.this, ReviewOrder.class);
                     intentThis.putExtra("seller",gigHolder.getUsername());
-                    intentThis.putExtra("gigid",gigHolder.getPrimaryKey());
+                    intentThis.putExtra("gigid",Integer.toString(gigHolder.getPrimaryKey()));
                     intentThis.putExtra("desciption",gigHolder.getDescription());
                     intentThis.putExtra("gigTitle",gigHolder.getTitle());
                     intentThis.putExtra("amountOne",gigHolder.getAdvanceAmount());
                     intentThis.putExtra("amountTwo",gigHolder.getSecondAmount());
                     intentThis.putExtra("username",getIntent().getStringExtra("username"));
+                    intentThis.putExtra("image",gigHolder.getImage());
+                    intentThis.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intentThis);
 
                 }

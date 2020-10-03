@@ -43,9 +43,9 @@ public class OrderAdapter extends ArrayAdapter<Orders> {
 
         Orders order = ordersList.get(position);
         RecOrderId.setText(Integer.toString(order.getId()));
-        sellerId.setText(order.getSeller());
+        sellerId.setText("To: "+order.getSeller());
         RecOrderEmail.setText(order.getWork_email());
-        RecOrderPrice.setText(Integer.toString(order.getTotal()));
+        RecOrderPrice.setText("$"+Integer.toString(order.getTotal()));
 
         if(order.getFinishdate()>0) {
             RecOrderCheck.setVisibility(View.VISIBLE);

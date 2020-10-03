@@ -10,10 +10,13 @@ import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.HelperClasses.Constants;
+import com.example.onlinefreelaceapp.adapter.GigHolder;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,6 +27,7 @@ public class ReviewOrder extends AppCompatActivity {
     TextView total_price,subtotal,service_charge,title,description,byseller;
     Button addOrder;
     DBHelper DB;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +43,42 @@ public class ReviewOrder extends AppCompatActivity {
         title = (TextView) findViewById(R.id.gigtitleorderreview);
         description = (TextView) findViewById(R.id.gigdescriptionorder);
         byseller = (TextView) findViewById(R.id.orderBySeller);
+        imageView = (ImageView) findViewById(R.id.gigimageorder);
+
+        DB = new DBHelper(this);
+
+        final GigHolder gigHolder = DB.getGigsFromPrimaryKey(Integer.parseInt(getIntent().getStringExtra("gigid")));
+
+        imageView.setImageURI(gigHolder.getImage());
 
         byseller.setText("Gig Posted By "+getIntent().getStringExtra("seller"));
 
+        subtotal.setText(getIntent().getStringExtra("amountOne"));
+        service_charge.setText(getIntent().getStringExtra("amountTwo"));
+
+        int amount_one = Integer.parseInt(getIntent().getStringExtra("amountOne"));
+        int amount_two = Integer.parseInt(getIntent().getStringExtra("amountTwo"));
+        int total_amount = amount_one + amount_two;
+
+        String totalAmount = Integer.toString(total_amount);
+
+        total_price.setText(totalAmount);
+
+        //imageView.setImageURI(getIntent().getStringExtra("image"));
+
         title.setText(getIntent().getStringExtra("gigTitle"));
         description.setText(getIntent().getStringExtra("desciption"));
+
 
         addOrder = (Button) findViewById(R.id.btnAddOrder);
 
         Intent intentUsername = getIntent();
         String user = intentUsername.getStringExtra("username");
 
-        DB = new DBHelper(this);
+
+
+        String txtEmail = DB.getUserEmailAddress(getIntent().getStringExtra("username"));
+        email.setText(txtEmail);
 
 //        String txtEmail = DB.getUserEmail(user);
 
@@ -62,7 +90,7 @@ public class ReviewOrder extends AppCompatActivity {
                 Intent intent1 = getIntent();
                 String buyer = intent1.getStringExtra("username");
                 String seller = getIntent().getStringExtra("seller");
-                int gigId = 12;
+                int gigId = Integer.parseInt(getIntent().getStringExtra("gigid"));
                 String workingEmail = email.getText().toString();
                 String orderReq = requirement.getText().toString();
                 String resourceLink = driveLink.getText().toString();
@@ -94,6 +122,7 @@ public class ReviewOrder extends AppCompatActivity {
                             intentPaymentPage.putExtra("sellerUsername", order.getSeller());
                             intentPaymentPage.putExtra("paymentTotal", order.getTotal());
                             intentPaymentPage.putExtra("PaymentSub", order.getSubTot());
+                            intentPaymentPage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intentPaymentPage);
                         } else {
                             Toast.makeText(ReviewOrder.this, "Order Failed!", Toast.LENGTH_SHORT).show();

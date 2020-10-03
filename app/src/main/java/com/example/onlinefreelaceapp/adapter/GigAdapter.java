@@ -94,6 +94,7 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
                    Intent intent = new Intent(activity, GigViewActivity.class);
                    intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
                    intent.putExtra("username",seller);
+                   intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                    activity.startActivity(intent);
                }
 
@@ -101,6 +102,7 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
                     Intent intent = new Intent(activity, GigViewActivity.class);
                     intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
                     intent.putExtra("username",seller);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     activity.startActivity(intent);
                 }
 
@@ -112,6 +114,7 @@ public class GigAdapter extends RecyclerView.Adapter<GigAdapter.ViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(activity, Create_A_Gig.class);
                 intent.putExtra(Constants.BUNDLE_ID, gigHolder.getPrimaryKey());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 activity.startActivity(intent);
             }
         });

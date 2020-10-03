@@ -65,6 +65,7 @@ public class updateUser extends AppCompatActivity {
                 Intent intent1 = new Intent(getApplicationContext(), settings.class);
                 intent1.putExtra("username",username);
                 intent1.putExtra("password",pass);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
                 //startActivity(new Intent(context, settings.class));
             }

@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity {
 
     Button tempbt;
     EditText usernameLogin,passwordLogin;
-    Button btnLogin;
+    Button btnLogin,createAccount;
     DBHelper DB;
 
     @Override
@@ -36,10 +36,20 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        tempbt=findViewById(R.id.temporybtn);
+        //tempbt=findViewById(R.id.temporybtn);
         usernameLogin = (EditText) findViewById(R.id.loginUserName);
         passwordLogin = (EditText) findViewById(R.id.loginPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
+        createAccount = (Button) findViewById(R.id.createAccountPage);
+
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SignUp.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
 
         DB = new DBHelper(this);
 
@@ -60,6 +70,7 @@ public class Login extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
                         intent.putExtra("username",username);
                         intent.putExtra("password",pass);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else {
                         Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
@@ -69,26 +80,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void postRequestUserView(View view){
-        startActivity(new Intent(getApplicationContext(), RequestPostUserView.class));
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        tempbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(Login.this, Become_A_Seller.class);
-                startActivity(intent);
-
-            }
-        });
     }
 
 

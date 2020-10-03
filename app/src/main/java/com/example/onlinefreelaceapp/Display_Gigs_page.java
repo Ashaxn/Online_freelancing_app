@@ -62,6 +62,7 @@ public class Display_Gigs_page extends AppCompatActivity implements UiRefresh {
             public void onClick(View view) {
 
                 Intent intent1 = new Intent(Display_Gigs_page.this, Create_A_Gig.class);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
 
             }
@@ -72,6 +73,7 @@ public class Display_Gigs_page extends AppCompatActivity implements UiRefresh {
             public void onClick(View view) {
                 Intent intentSW = new Intent(Display_Gigs_page.this, ViewAsCustomerActivity.class);
                 intentSW.putExtra("username",getIntent().getStringExtra("username"));
+                intentSW.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intentSW);
                 finish();
             }

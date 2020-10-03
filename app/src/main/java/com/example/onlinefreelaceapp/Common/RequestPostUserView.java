@@ -1,6 +1,7 @@
 package com.example.onlinefreelaceapp.Common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -42,6 +43,10 @@ public class RequestPostUserView extends AppCompatActivity {
         viewpostdescription.setText(""+postrequestmodel.getPostdesc()+"");
         viewpostbudget.setText(""+postrequestmodel.getPostbudget()+"");
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 

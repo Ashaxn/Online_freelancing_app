@@ -10,11 +10,13 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/applogoa">
 
         <activity android:name=".ui.main.ViewAsCustomerActivity"></activity>
         <activity android:name=".Common.LoginSignup.viewProfile"></activity>
         <activity android:name=".Common.LoginSignup.updateUser" />
+        <activity android:name=".Common.LoginSignup.Login"/>
         <activity android:name=".buyerRequest" />
         <activity android:name=".contactus" />
         <activity android:name=".settings" />
@@ -23,7 +25,6 @@
         <activity android:name=".Common.requestsuccess" />
         <activity android:name=".Common.contactusSuccess" />
         <activity android:name=".Common.passwordChangeSuccess" />
-        <activity android:name=".ui.main.ViewAsCustomerActivity" />
         <activity android:name=".ui.main.GigViewActivity" />
         <activity android:name=".Display_Gigs_page">
             <!--            <intent-filter>-->
@@ -63,10 +64,9 @@
         <activity android:name=".Common.BuyerRequestHome" />
         <activity android:name=".Common.BuyerRequestUser" />
         <activity android:name=".Common.PostRequest" />
-        <activity android:name=".PostARequest.post_request" />
         <activity android:name=".Common.LoginSignup.SignUpPageTwo" />
         <activity android:name=".Common.LoginSignup.SignUp" />
-        <activity android:name=".Common.LoginSignup.Login" />
+
         <activity android:name=".Common.LoginSignup.RetailerStartUpScreen" />
         <activity android:name=".Common.OnBoarding" />
         <activity android:name=".UserDashboard" />
