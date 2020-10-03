@@ -68,8 +68,7 @@
         <activity android:name=".Common.LoginSignup.Login" />
         <activity android:name=".Common.LoginSignup.RetailerStartUpScreen" />
         <activity android:name=".Common.OnBoarding" />
-        <activity android:name=".UserDashboard"
-            android:noHistory="true"/>
+        <activity android:name=".UserDashboard"/>
         <activity android:name=".Common.OnLine">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
