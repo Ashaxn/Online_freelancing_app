@@ -1,8 +1,5 @@
 package com.example.onlinefreelaceapp.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -14,9 +11,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.onlinefreelaceapp.Common.LoginSignup.RetailerStartUpScreen;
 import com.example.onlinefreelaceapp.HelperClasses.SliderAdapter;
 import com.example.onlinefreelaceapp.R;
-import com.example.onlinefreelaceapp.UserDashboard;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -49,12 +49,12 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view){
-        startActivity(new Intent(this, UserDashboard.class));
+        startActivity(new Intent(this, RetailerStartUpScreen.class));
         finish();
     }
 
     public void getStart(View view){
-        startActivity(new Intent(this, UserDashboard.class));
+        startActivity(new Intent(this, RetailerStartUpScreen.class));
         finish();
     }
 
