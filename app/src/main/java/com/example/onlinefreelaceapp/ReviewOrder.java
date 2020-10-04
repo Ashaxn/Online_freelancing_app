@@ -1,9 +1,6 @@
 package com.example.onlinefreelaceapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -14,12 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.onlinefreelaceapp.DataBase.DBHelper;
-import com.example.onlinefreelaceapp.HelperClasses.Constants;
-import com.example.onlinefreelaceapp.adapter.GigHolder;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.example.onlinefreelaceapp.DataBase.DBHelper;
+import com.example.onlinefreelaceapp.adapter.GigHolder;
 
 public class ReviewOrder extends AppCompatActivity {
 
@@ -47,7 +42,12 @@ public class ReviewOrder extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-        final GigHolder gigHolder = DB.getGigsFromPrimaryKey(Integer.parseInt(getIntent().getStringExtra("gigid")));
+
+        int gigidfromIntent = Integer.parseInt(getIntent().getStringExtra("gigid"));
+
+         System.out.println(gigidfromIntent);
+
+        final GigHolder gigHolder = DB.getGigsFromPrimaryKey(gigidfromIntent);
 
         imageView.setImageURI(gigHolder.getImage());
 
@@ -58,13 +58,13 @@ public class ReviewOrder extends AppCompatActivity {
 
         int amount_one = Integer.parseInt(getIntent().getStringExtra("amountOne"));
         int amount_two = Integer.parseInt(getIntent().getStringExtra("amountTwo"));
-        int total_amount = amount_one + amount_two;
+        int total_amount = getTotalPrice(amount_one,amount_two);
 
         String totalAmount = Integer.toString(total_amount);
 
         total_price.setText(totalAmount);
 
-        //imageView.setImageURI(getIntent().getStringExtra("image"));
+      //  imageView.setImageURI(getIntent().getStringExtra("image"));
 
         title.setText(getIntent().getStringExtra("gigTitle"));
         description.setText(getIntent().getStringExtra("desciption"));
@@ -77,12 +77,12 @@ public class ReviewOrder extends AppCompatActivity {
 
 
 
-        String txtEmail = DB.getUserEmailAddress(getIntent().getStringExtra("username"));
-        email.setText(txtEmail);
+          String txtEmail = DB.getUserEmailAddress(getIntent().getStringExtra("username"));
+          email.setText(txtEmail);
 
-//        String txtEmail = DB.getUserEmail(user);
+        //String txtEmail = DB.getUserEmail(user);
 
-  //      email.setText(txtEmail);
+        //email.setText(txtEmail);
 
         addOrder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +90,7 @@ public class ReviewOrder extends AppCompatActivity {
                 Intent intent1 = getIntent();
                 String buyer = intent1.getStringExtra("username");
                 String seller = getIntent().getStringExtra("seller");
+             //   int gigId = 12;
                 int gigId = Integer.parseInt(getIntent().getStringExtra("gigid"));
                 String workingEmail = email.getText().toString();
                 String orderReq = requirement.getText().toString();
@@ -98,9 +99,10 @@ public class ReviewOrder extends AppCompatActivity {
                 long publishDate = System.currentTimeMillis();
 
 
-                int totPrice = Integer.parseInt(total_price.getText().toString());
                 int subTotal = Integer.parseInt(subtotal.getText().toString());
                 int serviceCharge = Integer.parseInt(service_charge.getText().toString());
+
+                int totPrice = getTotalPrice(subTotal,serviceCharge);
 
                 Orders order = new Orders(subTotal,serviceCharge,totPrice,gigId,workingEmail,resourceLink,orderReq,buyer,seller,publishDate,0);
 
@@ -136,6 +138,11 @@ public class ReviewOrder extends AppCompatActivity {
         });
 
     }
+
+    public int getTotalPrice(int a,int b) {
+        return a+b;
+    }
+
 
 
 

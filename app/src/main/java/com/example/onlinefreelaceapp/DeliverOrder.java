@@ -1,8 +1,5 @@
 package com.example.onlinefreelaceapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DeliverOrder extends AppCompatActivity {
 
@@ -28,6 +27,9 @@ public class DeliverOrder extends AppCompatActivity {
         btnOrderResource = (Button) findViewById(R.id.btnOrderResource);
         massage = (EditText) findViewById(R.id.txtDeliverMsg);
         resource = (EditText) findViewById(R.id.linkDeliverResource);
+
+        //test
+       // final String resLink = "http://google.com";
 
         final String resLink = getIntent().getStringExtra("resource");
 
@@ -53,7 +55,7 @@ public class DeliverOrder extends AppCompatActivity {
         });
 
         txtDeliverOrderDetails.setText(getIntent().getStringExtra("req"));
-        deliverOrderId.setText("Order ID: #"+getIntent().getStringExtra("id"));
+       deliverOrderId.setText("Order ID: #"+getIntent().getStringExtra("id"));
 
 
 

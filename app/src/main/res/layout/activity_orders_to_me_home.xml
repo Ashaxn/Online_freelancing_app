@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrdersToMeHome">
+    tools:context=".OrdersToMeHome"
+    android:padding="30dp"
+    android:background="@drawable/vectorordersback">
+
 
     <LinearLayout
         android:padding="10dp"
@@ -37,7 +40,6 @@
             android:textColor="@color/colorAccent"
             android:textSize="10sp" />
 
-
     </LinearLayout>
 
 
@@ -53,6 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
+                android:outlineAmbientShadowColor="@color/colorAccent"
                 >
 
                 <LinearLayout
@@ -107,9 +110,10 @@
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="COMPLETED ORDERS"/>
+                    android:text="DELIVERED ORDERS"/>
 
                 <TextView
+                    android:id="@+id/idDeliveredOrder"
                     android:textColor="@color/colorAccent"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"

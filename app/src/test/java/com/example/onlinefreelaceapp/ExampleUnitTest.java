@@ -34,5 +34,8 @@ public class ExampleUnitTest {
         double txt_amount= (float) GigHolder.parseDouble(advanceAmount) + Double.parseDouble(secondAmount);
         assertEquals(5000,txt_amount,0.001);
     }
+
+
+
 }
  **/
